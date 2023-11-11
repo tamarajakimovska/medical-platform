@@ -70,10 +70,8 @@ const DOCTORS = [
     }
 ]
 
-
-
 export const DoctorsInfoContainer = () => {
-    return <Box display="flex" mt={'4%'} flexWrap='wrap' flexBasis='0 0 33.33333%' justifyContent='space-between' width='70%' alignItems='center' margin='0 auto' pt={5}
+    return <Box display="flex" flexWrap='wrap' justifyContent='space-between' alignItems='center'
         sx={{
             flexDirection: {
                 xs: 'column',
@@ -81,7 +79,7 @@ export const DoctorsInfoContainer = () => {
             }
         }}>
         {DOCTORS.map((currentDoctor) => {
-            return <Box key={currentDoctor.name}>
+            return <Box key={currentDoctor.name} flexBasis={'32%'} borderRadius={'4px'}>
                 <DoctorInfo image={currentDoctor.image} name={currentDoctor.name} specialty={currentDoctor.specialty} adress={currentDoctor.adress} />
             </Box>
         })}

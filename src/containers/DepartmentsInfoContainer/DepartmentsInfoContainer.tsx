@@ -10,6 +10,7 @@ import Department6 from '../../images/department-6.jpeg';
 import Department7 from '../../images/department-7.jpeg';
 import Department8 from '../../images/department-8.jpeg';
 import Department9 from '../../images/department-9.jpeg';
+import { styled } from "@mui/material";
 
 const DEPARTMENTS = [
     {
@@ -59,27 +60,37 @@ const DEPARTMENTS = [
     },
 ]
 
+const Title = styled('h3')({
+    color: 'rgba(31, 32, 34, .5)',
+    fontSize: '2rem',
+    width: '100 %',
+
+})
+
 
 export const DeparmentsInfoContainer = () => {
-    return <Box
-        display="flex"
-        mt={'4%'}
-        flexWrap='wrap'
-        width='70%'
-        justifyContent='space-between'
-        alignItems='center'
-        margin='0 auto'
-        pt={5}
-        sx={{
-            flexDirection: {
-                xs: 'column',
-                sm: 'row'
-            }
-        }}>
-        {DEPARTMENTS.map((currentDepartment) => {
-            return <Box key={currentDepartment.image} flexBasis={'33.33%'}>
-                <DepartmentsInfo image={currentDepartment.image} department={currentDepartment.department} purpose={currentDepartment.purpose} />
-            </Box>
-        })}
+    return <Box>
+        <Title>Departments</Title>
+        <Box
+            display="flex"
+            mt={'4%'}
+            flexWrap='wrap'
+            justifyContent='space-between'
+            alignItems='center'
+            margin='0 auto'
+            pt={5}
+            sx={{
+                flexDirection: {
+                    xs: 'column',
+                    sm: 'row'
+                }
+            }}>
+
+            {DEPARTMENTS.map((currentDepartment) => {
+                return <Box key={currentDepartment.image} flexBasis={'32%'}>
+                    <DepartmentsInfo image={currentDepartment.image} department={currentDepartment.department} purpose={currentDepartment.purpose} />
+                </Box>
+            })}
+        </Box>
     </Box>
 }

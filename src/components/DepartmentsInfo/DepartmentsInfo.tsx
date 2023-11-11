@@ -14,7 +14,7 @@ const InfoBoxDepartments = styled('div')({
     boxShadow: '0 18px 34px rgba(0, 0, 0, .12)',
     display: 'block',
     margin: '0 auto 6rem',
-    maxWidth: '400px',
+    minHeight: '442px',
     textAlign: 'center',
     paddingBottom: '20px',
 })
@@ -22,7 +22,7 @@ const InfoBoxDepartments = styled('div')({
 export const DepartmentsInfo = ({ image, department, purpose }: Props) => {
     return <Box display='flex' flexDirection='column'>
         <InfoBoxDepartments>
-            <Box maxWidth='100%' height='auto'> <img src={image} alt="departments" /> </Box>
+            <Box maxWidth='100%' height='auto'> <img src={image} alt="departments" width='100%' style={{ borderRadius: '4px' }} /> </Box>
             <Box>  <h2>{department}</h2>
                 <p>{purpose}</p>
             </Box>

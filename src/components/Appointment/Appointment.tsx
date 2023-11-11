@@ -19,9 +19,9 @@ const AppointmentInfoBox = styled('div')({
 })
 
 export const Appointment = ({ image, name, email, date, visitTime, number, doctor, injury }: Props) => {
-    return <Box display="flex">
+    return <Box>
         <AppointmentInfoBox>
-            <Box> <img src={image} alt="patient" />
+            <Box display="flex" textAlign={'left'} justifyContent={'space-between'}> <img src={image} alt="patient" />
                 <div>{name}</div>
                 <div>{email}</div>
                 <div>{date}</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { AppointmentsContainer, DeparmentsInfoContainer, DoctorsInfoContainer } from './containers';
+import { AppointmentsContainer, DeparmentsInfoContainer, DoctorsInfoContainer, MainContainer } from './containers';
 import {
   BrowserRouter,
   Route,
@@ -10,11 +10,13 @@ import {
 
 function App() {
   return <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<DoctorsInfoContainer />} />
-      <Route path="/departments" element={<DeparmentsInfoContainer />} />
-      <Route path="/appointments" element={<AppointmentsContainer />} />
-    </Routes>
+    <MainContainer>
+      <Routes>
+        <Route path="/" element={<DoctorsInfoContainer />} />
+        <Route path="/departments" element={<DeparmentsInfoContainer />} />
+        <Route path="/appointments" element={<AppointmentsContainer />} />
+      </Routes>
+    </MainContainer>
   </BrowserRouter>
 }
 
