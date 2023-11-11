@@ -80,7 +80,6 @@ export const DeparmentsInfoContainer = () => {
             return <Box key={currentDepartment.image} flexBasis={'33.33%'}>
                 <DepartmentsInfo image={currentDepartment.image} department={currentDepartment.department} purpose={currentDepartment.purpose} />
             </Box>
-
         })}
     </Box>
 }

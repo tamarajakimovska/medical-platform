@@ -12,8 +12,6 @@ interface Props {
     number: string;
     doctor: string;
     injury: string;
-
-
 }
 
 const AppointmentInfoBox = styled('div')({

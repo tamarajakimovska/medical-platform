@@ -15,9 +15,6 @@ import Patient13 from '../../images/patient13.jpeg';
 import { Box } from "@mui/system";
 import { Appointment } from "../../components";
 
-
-
-
 const PATIENTS = [
     {
         image: Patient1,
@@ -151,14 +148,12 @@ const PATIENTS = [
     },
 ]
 
-
 export const AppointmentsContainer = () => {
     return <Box>
         {PATIENTS.map((currentPatient) => {
             return <Box>
                 <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} />
             </Box>
-
         })}
     </Box>
-}
+};

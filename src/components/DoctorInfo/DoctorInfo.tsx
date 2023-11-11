@@ -17,7 +17,6 @@ const InfoBox = styled('div')({
     maxWidth: '700px',
     textAlign: 'center',
     paddingBottom: '20px'
-
 })
 
 export const DoctorInfo = ({ image, name, specialty, adress }: Props) => {
@@ -25,12 +24,10 @@ export const DoctorInfo = ({ image, name, specialty, adress }: Props) => {
         <InfoBox>
             <Box>
                 <Box maxWidth="100%" height="auto">  <img src={image} alt="doctor" /> </Box>
-
                 <h2>{name}</h2>
                 <span>{specialty}</span>
                 <div>{adress}</div>
                 <Box pt={2}> <Button variant="contained">View Profile</Button> </Box>
-
             </Box>
         </InfoBox>
     </Box>

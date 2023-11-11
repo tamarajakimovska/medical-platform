@@ -6,8 +6,6 @@ interface Props {
     image: string;
     department: string;
     purpose: string;
-
-
 }
 
 const InfoBoxDepartments = styled('div')({
@@ -24,13 +22,10 @@ const InfoBoxDepartments = styled('div')({
 export const DepartmentsInfo = ({ image, department, purpose }: Props) => {
     return <Box display='flex' flexDirection='column'>
         <InfoBoxDepartments>
-
             <Box maxWidth='100%' height='auto'> <img src={image} alt="departments" /> </Box>
             <Box>  <h2>{department}</h2>
                 <p>{purpose}</p>
-
             </Box>
-
         </InfoBoxDepartments>
     </Box>
 }

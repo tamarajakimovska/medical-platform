@@ -23,28 +23,24 @@ const DOCTORS = [
         name: 'Dr. Liam',
         specialty: 'Dentist',
         adress: '795 Folsom Ave, Suite 600 San Francisco, CADGE 94107'
-
     },
     {
         image: Doctor3,
         name: 'Dr.Noah',
         specialty: 'Nursing',
         adress: '795 Folsom Ave, Suite 600 San Francisco, CADGE 94107'
-
     },
     {
         image: Doctor4,
         name: 'Dr.Emma',
         specialty: 'Audiology',
         adress: '795 Folsom Ave, Suite 600 San Francisco, CADGE 94107'
-
     },
     {
         image: Doctor5,
         name: 'Dr. James',
         specialty: 'Physical Therapy',
         adress: '795 Folsom Ave, Suite 600 San Francisco, CADGE 94107'
-
     },
     {
         image: Doctor6,
@@ -58,7 +54,6 @@ const DOCTORS = [
         name: 'Dr.Logan',
         specialty: 'Physical Therapy',
         adress: '795 Folsom Ave, Suite 600 San Francisco, CADGE 94107'
-
     },
     {
         image: Doctor8,
@@ -72,7 +67,6 @@ const DOCTORS = [
         name: 'Dr.Mason',
         specialty: 'Dentist',
         adress: '795 Folsom Ave, Suite 600 San Francisco, CADGE 94107'
-
     }
 ]
 
@@ -85,8 +79,7 @@ export const DoctorsInfoContainer = () => {
                 xs: 'column',
                 sm: 'row'
             }
-        }}
-    >
+        }}>
         {DOCTORS.map((currentDoctor) => {
             return <Box key={currentDoctor.name}>
                 <DoctorInfo image={currentDoctor.image} name={currentDoctor.name} specialty={currentDoctor.specialty} adress={currentDoctor.adress} />
