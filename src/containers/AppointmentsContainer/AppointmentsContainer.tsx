@@ -14,6 +14,7 @@ import Patient12 from '../../images/patient12.jpeg';
 import Patient13 from '../../images/patient13.jpeg';
 import { Box } from "@mui/system";
 import { Appointment } from "../../components";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 const PATIENTS = [
     {
@@ -149,11 +150,28 @@ const PATIENTS = [
 ]
 
 export const AppointmentsContainer = () => {
-    return <Box>
-        {PATIENTS.map((currentPatient) => {
-            return <Box>
-                <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} />
-            </Box>
-        })}
-    </Box>
+    return <TableContainer component={Paper}>
+        <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
+            <TableHead>
+                <TableRow>
+                    <TableCell align="left"> <b>Photo </b></TableCell>
+                    <TableCell align="left"><b>Name</b></TableCell>
+                    <TableCell align="left"><b>E-mail</b></TableCell>
+                    <TableCell align="left"><b>Date</b></TableCell>
+                    <TableCell align="left"><b>Visit Time</b></TableCell>
+                    <TableCell align="left"><b>Number</b></TableCell>
+                    <TableCell align="left"><b>Doctor</b></TableCell>
+                    <TableCell align="left"><b>Injury</b></TableCell>
+                    <TableCell align="left"><b>Actions</b></TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {PATIENTS.map((currentPatient) => {
+                    return <TableRow>
+                        <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} />
+                    </TableRow>
+                })}
+            </TableBody>
+        </Table>
+    </TableContainer>
 };
