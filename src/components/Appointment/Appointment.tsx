@@ -15,6 +15,7 @@ interface Props {
     number: string;
     doctor: string;
     injury: string;
+    areActionsVisible?: boolean
 }
 
 const StyleButton = styled('div')({
@@ -27,11 +28,9 @@ const StyleButton = styled('div')({
     width: '10px'
 })
 
-
-export const Appointment = ({ image, name, email, date, visitTime, number, doctor, injury }: Props) => {
+export const Appointment = ({ image, name, email, date, visitTime, number, doctor, injury, areActionsVisible = true }: Props) => {
     return (
         <React.Fragment>
-
             <TableCell><img src={image} alt="patient" /></TableCell>
             <TableCell align="left">{name}</TableCell>
             <TableCell align="left">{email}</TableCell>
@@ -40,15 +39,18 @@ export const Appointment = ({ image, name, email, date, visitTime, number, docto
             <TableCell align="left">{number}</TableCell>
             <TableCell align="left">{doctor}</TableCell>
             <TableCell align="left">{injury}</TableCell>
-            <TableCell align="left">
-                <Fab size="small" color="primary" aria-label="add">
-                    <EditIcon />
-                </Fab>
-                <Fab size="small" color="secondary" aria-label="add">
-                    <DeleteIcon />
-                </Fab>
-            </TableCell>
-
+            {
+                areActionsVisible ? (
+                    <TableCell align="left">
+                        <Fab size="small" color="primary" aria-label="add">
+                            <EditIcon />
+                        </Fab>
+                        <Fab size="small" color="secondary" aria-label="add">
+                            <DeleteIcon />
+                        </Fab>
+                    </TableCell>
+                ) : null
+            }
         </React.Fragment>
     )
 }

@@ -14,9 +14,10 @@ import Patient12 from '../../images/patient12.jpeg';
 import Patient13 from '../../images/patient13.jpeg';
 import { Box } from "@mui/system";
 import { Appointment } from "../../components";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 
-const PATIENTS = [
+// TO-DO: Use BE here
+export const PATIENTS = [
     {
         image: Patient1,
         name: 'Emma',
@@ -149,29 +150,33 @@ const PATIENTS = [
     },
 ]
 
+
+const Title = styled('h2')({
+    color: 'rgba(31, 32, 34, .5)',
+    fontSize: '2rem',
+    width: '100%',
+})
+
 export const AppointmentsContainer = () => {
-    return <TableContainer component={Paper}>
-        <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
-            <TableHead>
-                <TableRow>
-                    <TableCell align="left"> <b>Photo </b></TableCell>
-                    <TableCell align="left"><b>Name</b></TableCell>
-                    <TableCell align="left"><b>E-mail</b></TableCell>
-                    <TableCell align="left"><b>Date</b></TableCell>
-                    <TableCell align="left"><b>Visit Time</b></TableCell>
-                    <TableCell align="left"><b>Number</b></TableCell>
-                    <TableCell align="left"><b>Doctor</b></TableCell>
-                    <TableCell align="left"><b>Injury</b></TableCell>
-                    <TableCell align="left"><b>Actions</b></TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {PATIENTS.map((currentPatient) => {
-                    return <TableRow>
-                        <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} />
+    return <React.Fragment>
+        <Title>Appointments</Title>
+        <TableContainer component={Paper}>
+            <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)' }}>
+                <TableHead>
+                    <TableRow>
+                        {['Photo', 'Name', 'E-mail', 'Date', 'Visit Time', 'Number', 'Doctor', 'Injury', 'Actions'].map((tableCellName) => {
+                            return <TableCell align="left"><b>{tableCellName}</b></TableCell>
+                        })}
                     </TableRow>
-                })}
-            </TableBody>
-        </Table>
-    </TableContainer>
+                </TableHead>
+                <TableBody>
+                    {PATIENTS.map((currentPatient) => {
+                        return <TableRow>
+                            <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} />
+                        </TableRow>
+                    })}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    </React.Fragment>
 };

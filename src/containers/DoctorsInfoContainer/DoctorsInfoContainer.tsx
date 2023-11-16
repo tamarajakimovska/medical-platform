@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import React from "react";
 import { DoctorInfo } from "../../components";
 import Doctor1 from "../../images/doctor01.jpeg";
@@ -70,6 +70,13 @@ const DOCTORS = [
     }
 ]
 
+const Title = styled('h3')({
+    color: 'rgba(31, 32, 34, .5)',
+    fontSize: '2rem',
+    width: '100 %',
+
+})
+
 export const DoctorsInfoContainer = () => {
     return <Box display="flex" flexWrap='wrap' justifyContent='space-between' alignItems='center'
         sx={{
@@ -78,6 +85,7 @@ export const DoctorsInfoContainer = () => {
                 sm: 'row'
             }
         }}>
+
         {DOCTORS.map((currentDoctor) => {
             return <Box key={currentDoctor.name} flexBasis={'32%'} borderRadius={'4px'}>
                 <DoctorInfo image={currentDoctor.image} name={currentDoctor.name} specialty={currentDoctor.specialty} adress={currentDoctor.adress} />

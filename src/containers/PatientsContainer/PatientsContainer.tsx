@@ -12,7 +12,7 @@ import Patient10 from '../../images/patient10.jpeg';
 import Patient11 from '../../images/patient11.jpeg';
 import Patient12 from '../../images/patient12.jpeg';
 import Patient13 from '../../images/patient13.jpeg';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import { Patient } from "../../components";
 
 const OUR_PATIENTS = [
@@ -137,6 +137,12 @@ const OUR_PATIENTS = [
     },
 ]
 
+const Title = styled('h3')({
+    color: 'rgba(31, 32, 34, .5)',
+    fontSize: '2rem',
+    width: '100 %',
+
+})
 
 export const PatientsContainer = () => {
     return <TableContainer component={Paper}>

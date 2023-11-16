@@ -9,6 +9,7 @@ import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import { Payment } from "@mui/icons-material";
 import AddIcon from '@mui/icons-material/Add';
+import { useLocation, useNavigate } from "react-router";
 
 
 interface Props {
@@ -33,25 +34,51 @@ const Units = styled('div')({
     margin: '10%',
     display: 'flex',
     alignItems: 'center',
-
-
 })
+
+const NavItem = styled('div')((props) => ({
+    color: props.className === 'active' ? '#336cfb' : 'black',
+    fontWeight: props.className === 'active' ? 'bold' : 'normal',
+    cursor: props.className === 'active' ? 'default' : 'pointer'
+}));
 
 const ButtonStyle = styled('div')({
     margin: '10%'
 })
 
 export const MainContainer = ({ children }: Props) => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    console.log('loc', location)
+
     return <Box display={'flex'}>
         <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'}>
             <LogoStyle> <img src={logo} /></LogoStyle>
             <Title>MEDICINE</Title>
-            <Units> <DashboardCustomizeRoundedIcon /> Dashboard</Units>
-            <Units> <PersonSearchIcon /> Appointments</Units>
-            <Units><GroupsIcon /> Doctors</Units>
-            <Units> <LocalHospitalIcon /> Departments</Units>
-            <Units><VaccinesIcon />Patients</Units>
-            <Units> <PaymentsIcon /> Payments</Units>
+            <Units onClick={() => navigate('/')}>
+                <DashboardCustomizeRoundedIcon />
+                <Box ml={1}>
+                    <NavItem className={location.pathname === '/' ? 'active' : ''}>Dashboard</NavItem>
+                </Box>
+            </Units>
+            <Units onClick={() => navigate('/appointments')}> <PersonSearchIcon />
+                <Box ml={1}>
+                    <NavItem className={location.pathname === '/appointments' ? 'active' : ''}>Appointments</NavItem>
+                </Box>
+            </Units>
+            <Units onClick={() => navigate('/doctors')}> <GroupsIcon />  <Box ml={1}>
+                <NavItem className={location.pathname === '/doctors' ? 'active' : ''}>Doctors</NavItem>
+            </Box></Units>
+            <Units onClick={() => navigate('/departments')}> <LocalHospitalIcon />  <Box ml={1}>
+                <NavItem className={location.pathname === '/departments' ? 'active' : ''}>Departments</NavItem>
+            </Box></Units>
+            <Units onClick={() => navigate('/patients')}> <VaccinesIcon /> <Box ml={1}>
+                <NavItem className={location.pathname === '/patients' ? 'active' : ''}>Patients</NavItem>
+            </Box></Units>
+            <Units onClick={() => navigate('/payments')}> <PaymentsIcon />  <Box ml={1}>
+                <NavItem className={location.pathname === '/payments' ? 'active' : ''}>Payments</NavItem>
+            </Box></Units>
             <ButtonStyle>
                 <Button variant="contained"> <AddIcon /> Add Patient</Button>
             </ButtonStyle>
