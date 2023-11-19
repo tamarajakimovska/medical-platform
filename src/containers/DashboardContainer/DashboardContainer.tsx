@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Appointment, DashboardCart, DonutChart } from "../../components";
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
-import { PATIENTS } from "../AppointmentsContainer";
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import SickIcon from '@mui/icons-material/Sick';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaidIcon from '@mui/icons-material/Paid';
+import axios from "axios";
 
 
 const DASHBOARD_CART = [
@@ -38,6 +38,18 @@ const Title = styled('h3')({
 })
 
 export const DashboardContainer = () => {
+    const [patients, setPatients] = useState<any>([]);
+
+    useEffect(() => {
+        const getPatients = async () => {
+            const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
+
+            response.status === 200 ? setPatients(response.data) : setPatients([]);
+        }
+
+        getPatients();
+    }, [])
+
     return <React.Fragment>
         <Box display={'flex'} justifyContent={'space-between'}>
             {DASHBOARD_CART.map((currentCart) => {
@@ -64,13 +76,13 @@ export const DashboardContainer = () => {
                             })}
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {PATIENTS.map((currentPatient) => {
+                    {<TableBody>
+                        {patients.map((currentPatient: any) => {
                             return <TableRow>
                                 <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} areActionsVisible={false} />
                             </TableRow>
                         })}
-                    </TableBody>
+                    </TableBody>}
                 </Table>
             </TableContainer>
         </Box>

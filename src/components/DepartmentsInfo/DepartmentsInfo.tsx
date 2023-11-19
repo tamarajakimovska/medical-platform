@@ -11,7 +11,7 @@ interface Props {
 const InfoBoxDepartments = styled('div')({
     background: '#fff',
     borderRadius: '13px',
-    dow: '0 18px 34px rgba(0, 0, 0, .12)',
+    boxShadow: '0 18px 34px rgba(0, 0, 0, .12)',
     display: 'block',
     margin: '0 auto 6rem',
     minHeight: '442px',

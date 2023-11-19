@@ -25,6 +25,4 @@ export const DashboardCart = ({ icon, name, count }: Props) => {
             <Box>{count}</Box>
         </Box>
     </Cart>
-
-
-}
+};

@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 import { DepartmentsInfo } from "../../components";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Department1 from '../../images/department-1.jpeg';
 import Department2 from '../../images/department-2.jpeg';
 import Department3 from '../../images/department-3.jpeg';
@@ -11,6 +11,7 @@ import Department7 from '../../images/department-7.jpeg';
 import Department8 from '../../images/department-8.jpeg';
 import Department9 from '../../images/department-9.jpeg';
 import { styled } from "@mui/material";
+import axios from "axios";
 
 const DEPARTMENTS = [
     {
@@ -64,11 +65,21 @@ const Title = styled('h3')({
     color: 'rgba(31, 32, 34, .5)',
     fontSize: '2rem',
     width: '100 %',
-
 })
 
 
 export const DeparmentsInfoContainer = () => {
+    const [departments, setDepartments] = useState<any>([]);
+
+    useEffect(() => {
+        const getDepartments = async () => {
+            const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/departments');
+
+            response.status === 200 ? setDepartments(response.data) : setDepartments([]);
+        }
+
+        getDepartments();
+    }, []);
     return <Box>
         <Title>Departments</Title>
         <Box
@@ -86,7 +97,7 @@ export const DeparmentsInfoContainer = () => {
                 }
             }}>
 
-            {DEPARTMENTS.map((currentDepartment) => {
+            {departments.map((currentDepartment: any) => {
                 return <Box key={currentDepartment.image} flexBasis={'32%'}>
                     <DepartmentsInfo image={currentDepartment.image} department={currentDepartment.department} purpose={currentDepartment.purpose} />
                 </Box>
