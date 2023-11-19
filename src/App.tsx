@@ -6,21 +6,23 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-
+import { ContextProvider } from './context';
 
 function App() {
-  return <BrowserRouter>
-    <MainContainer>
-      <Routes>
-        <Route path="/" element={<DashboardContainer />} />
-        <Route path="/doctors" element={<DoctorsInfoContainer />} />
-        <Route path="/departments" element={<DeparmentsInfoContainer />} />
-        <Route path="/appointments" element={<AppointmentsContainer />} />
-        <Route path="/patients" element={<PatientsContainer />} />
-        <Route path="/payments" element={<PaymentsContainer />} />
-      </Routes>
-    </MainContainer>
-  </BrowserRouter>
+  return <ContextProvider>
+    <BrowserRouter>
+      <MainContainer>
+        <Routes>
+          <Route path="/" element={<DashboardContainer />} />
+          <Route path="/doctors" element={<DoctorsInfoContainer />} />
+          <Route path="/departments" element={<DeparmentsInfoContainer />} />
+          <Route path="/appointments" element={<AppointmentsContainer />} />
+          <Route path="/patients" element={<PatientsContainer />} />
+          <Route path="/payments" element={<PaymentsContainer />} />
+        </Routes>
+      </MainContainer>
+    </BrowserRouter>
+  </ContextProvider>
 }
 
 export default App;

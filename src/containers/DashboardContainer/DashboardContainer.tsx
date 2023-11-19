@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Appointment, DashboardCart, DonutChart } from "../../components";
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
@@ -6,6 +6,7 @@ import SickIcon from '@mui/icons-material/Sick';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaidIcon from '@mui/icons-material/Paid';
 import axios from "axios";
+import { Context } from "../../context";
 
 
 const DASHBOARD_CART = [
@@ -38,13 +39,23 @@ const Title = styled('h3')({
 })
 
 export const DashboardContainer = () => {
-    const [patients, setPatients] = useState<any>([]);
+    // const [patients, setPatients] = useState<any>([]);
+    const state = useContext(Context);
 
     useEffect(() => {
         const getPatients = async () => {
-            const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
+            // Do not remove this!!!!!
+            // const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
+            // response.status === 200 ? setPatients(response.data) : setPatients([]);
+            if (!state.patients.length)
+                try {
+                    state.getPatients();
+                    const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
 
-            response.status === 200 ? setPatients(response.data) : setPatients([]);
+                    state.getPatientsSuccess(response.data);
+                } catch (error) {
+                    state.getPatientsFail();
+                }
         }
 
         getPatients();
@@ -67,24 +78,30 @@ export const DashboardContainer = () => {
         </Box>
         <Box>
             <Title>Last Appointments</Title>
-            <TableContainer component={Paper}>
-                <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)' }}>
-                    <TableHead style={{ backgroundColor: '#EBEBEB' }}>
-                        <TableRow>
-                            {['Photo', 'Name', 'E-mail', 'Date', 'Visit Time', 'Number', 'Doctor', 'Injury'].map((tableCellName) => {
-                                return <TableCell align="left"><b>{tableCellName}</b></TableCell>
-                            })}
-                        </TableRow>
-                    </TableHead>
-                    {<TableBody>
-                        {patients.map((currentPatient: any) => {
-                            return <TableRow>
-                                <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} areActionsVisible={false} />
-                            </TableRow>
-                        })}
-                    </TableBody>}
-                </Table>
-            </TableContainer>
+            {
+                state.isLoadingPatients ? <div>Loading ...</div> : (
+                    <TableContainer component={Paper}>
+                        <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)' }}>
+                            <TableHead style={{ backgroundColor: '#EBEBEB' }}>
+                                <TableRow>
+                                    {['Photo', 'Name', 'E-mail', 'Date', 'Visit Time', 'Number', 'Doctor', 'Injury'].map((tableCellName) => {
+                                        return <TableCell align="left"><b>{tableCellName}</b></TableCell>
+                                    })}
+                                </TableRow>
+                            </TableHead>
+                            {
+                                <TableBody>
+                                    {state.patients.map((currentPatient: any) => {
+                                        return <TableRow>
+                                            <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} areActionsVisible={false} />
+                                        </TableRow>
+                                    })}
+                                </TableBody>
+                            }
+                        </Table>
+                    </TableContainer>
+                )
+            }
         </Box>
     </React.Fragment>
 }

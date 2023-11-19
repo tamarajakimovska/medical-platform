@@ -50,8 +50,6 @@ export const MainContainer = ({ children }: Props) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    console.log('loc', location)
-
     return <Box display={'flex'}>
         <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'}>
             <LogoStyle> <img src={logo} /></LogoStyle>
