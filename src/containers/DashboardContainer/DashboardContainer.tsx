@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Appointment, DashboardCart, DonutChart } from "../../components";
+import { Appointment, BasicLineChart, DashboardCart, DonutChart } from "../../components";
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import SickIcon from '@mui/icons-material/Sick';
@@ -7,7 +7,7 @@ import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaidIcon from '@mui/icons-material/Paid';
 import axios from "axios";
 import { Context } from "../../context";
-import { AreaChart } from "../../components/AreaChart";
+import { AreaChart } from "../../components";
 
 
 const DASHBOARD_CART = [
@@ -79,6 +79,9 @@ export const DashboardContainer = () => {
             {DASHBOARD_CART.map((currentCart) => {
                 return <DashboardCart icon={currentCart.icon} name={currentCart.name} count={currentCart.count} />
             })}
+        </Box>
+        <Box mt={3}>
+            <BasicLineChart />
         </Box>
         <Box mt={3}>
             <Income> <b>Income</b></Income>
