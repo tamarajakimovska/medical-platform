@@ -19,7 +19,7 @@ interface Props {
 
 export const Patient = ({ image, name, id, age, adress, number, lastVisit }: Props) => {
     return (<React.Fragment>
-        <TableCell><img src={image} alt="patient" /></TableCell>
+        <TableCell><img src={image} alt="patient" style={{ borderRadius: '50%' }} /></TableCell>
         <TableCell align="left">{name}</TableCell>
         <TableCell align="left">{id}</TableCell>
         <TableCell align="left">{age}</TableCell>

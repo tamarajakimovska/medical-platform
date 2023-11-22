@@ -7,26 +7,27 @@ import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaidIcon from '@mui/icons-material/Paid';
 import axios from "axios";
 import { Context } from "../../context";
+import { AreaChart } from "../../components/AreaChart";
 
 
 const DASHBOARD_CART = [
     {
-        icon: <LocalHospitalIcon />,
+        icon: <LocalHospitalIcon fontSize="large" />,
         name: "Appointments",
         count: 213
     },
     {
-        icon: <SickIcon />,
+        icon: <SickIcon fontSize="large" />,
         name: "New patients",
         count: 213
     },
     {
-        icon: <VaccinesIcon />,
+        icon: <VaccinesIcon fontSize="large" />,
         name: "Operations",
         count: 23
     },
     {
-        icon: <PaidIcon />,
+        icon: <PaidIcon fontSize="large" />,
         name: "Earnings",
         count: 5238
     },
@@ -36,6 +37,18 @@ const Title = styled('h3')({
     color: 'rgba(31, 32, 34, .5)',
     fontSize: '2rem',
     width: '100%',
+})
+
+const IncomeInCurrentMonth = styled('div')({
+    color: 'rgb(157, 157, 157)',
+    fontSize: '14px',
+    marginLeft: '20px'
+})
+
+const Income = styled('div')({
+    marginLeft: '20px',
+    fontSize: '20px',
+
 })
 
 export const DashboardContainer = () => {
@@ -66,6 +79,11 @@ export const DashboardContainer = () => {
             {DASHBOARD_CART.map((currentCart) => {
                 return <DashboardCart icon={currentCart.icon} name={currentCart.name} count={currentCart.count} />
             })}
+        </Box>
+        <Box mt={3}>
+            <Income> <b>Income</b></Income>
+            <IncomeInCurrentMonth>Income in current month</IncomeInCurrentMonth>
+            <AreaChart />
         </Box>
         <Box display={'flex'} justifyContent={'space-between'}>
             <Box><h3> Age </h3>

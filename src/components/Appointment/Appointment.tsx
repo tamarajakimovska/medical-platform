@@ -31,7 +31,7 @@ const StyleButton = styled('div')({
 export const Appointment = ({ image, name, email, date, visitTime, number, doctor, injury, areActionsVisible = true }: Props) => {
     return (
         <React.Fragment>
-            <TableCell><img src={image} alt="patient" /></TableCell>
+            <TableCell ><img src={image} alt="patient" style={{ borderRadius: '50%' }} /></TableCell>
             <TableCell align="left">{name}</TableCell>
             <TableCell align="left">{email}</TableCell>
             <TableCell align="left">{date}</TableCell>

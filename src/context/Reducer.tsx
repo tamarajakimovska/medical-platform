@@ -3,7 +3,8 @@ import { GlobalState } from "../interfaces";
 export enum Actions {
     GET_PATIENTS = 'GET_PATIENTS',
     GET_PATIENTS_SUCCESS = 'GET_PATIENTS_SUCCESS',
-    GET_PATIENTS_FAIL = 'GET_PATIENTS_FAIL'
+    GET_PATIENTS_FAIL = 'GET_PATIENTS_FAIL',
+    SET_IS_ADD_PATIENT_DIALOG_OPEN = 'SET_IS_ADD_PATIENT_DIALOG_OPEN'
 };
 
 type Action = {
@@ -29,6 +30,11 @@ export const Reducer = (state: GlobalState, action: Action) => {
                 ...state,
                 isLoadingPatients: false,
                 // TO-DO: We can add error
+            }
+        case Actions.SET_IS_ADD_PATIENT_DIALOG_OPEN:
+            return {
+                ...state,
+                isAddPatientDialogOpen: action.payload
             }
         default:
             return state

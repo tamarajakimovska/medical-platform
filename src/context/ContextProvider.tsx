@@ -9,9 +9,11 @@ interface Props {
 export const initialState: GlobalState = {
     patients: [],
     isLoadingPatients: false,
+    isAddPatientDialogOpen: false,
     getPatients: () => null,
     getPatientsSuccess: (patients: any) => null,
     getPatientsFail: () => null,
+    setIsAddPatientDialogOpen: () => null
 }
 
 export const Context = createContext<GlobalState>(initialState);
@@ -31,13 +33,19 @@ export const ContextProvider = ({ children }: Props) => {
         dispatch({ type: Actions.GET_PATIENTS_FAIL });
     }
 
+    const setIsAddPatientDialogOpen = (isOpen: boolean) => {
+        dispatch({ type: Actions.SET_IS_ADD_PATIENT_DIALOG_OPEN, payload: isOpen });
+    }
+
     return <Context.Provider
         value={{
             patients: state.patients,
             isLoadingPatients: state.isLoadingPatients,
+            isAddPatientDialogOpen: state.isAddPatientDialogOpen,
             getPatients: () => getPatients(),
             getPatientsSuccess: (patients: any) => getPatientsSuccess(patients),
             getPatientsFail: () => getPatientsFail(),
+            setIsAddPatientDialogOpen: (isOpen: boolean) => setIsAddPatientDialogOpen(isOpen)
         }}>
         {children}
     </Context.Provider>

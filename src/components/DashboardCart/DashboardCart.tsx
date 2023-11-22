@@ -17,12 +17,31 @@ const Cart = styled('div')({
     width: '100%'
 })
 
+const IconStyle = styled('div')({
+    color: 'rgba(51, 108, 251, 0.5)',
+    marginRight: '15px',
+
+
+})
+
+const NameStyle = styled('div')({
+    fontFamily: 'Lato, sans - serif',
+    fontWeight: '600'
+
+})
+
+const CountStyle = styled('div')({
+    fontSize: '20px',
+    color: 'rgb(51, 108, 251)',
+    lineHeight: '1.4'
+})
+
 export const DashboardCart = ({ icon, name, count }: Props) => {
     return <Cart>
-        <Box mr={5}>{icon}</Box>
+        <IconStyle>{icon}</IconStyle>
         <Box display={'flex'} flexDirection={'column'}>
-            <Box>{name}</Box>
-            <Box>{count}</Box>
+            <NameStyle>{name}</NameStyle>
+            <CountStyle>{count}</CountStyle>
         </Box>
     </Cart>
 };
