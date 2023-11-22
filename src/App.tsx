@@ -7,7 +7,6 @@ import {
   Routes
 } from "react-router-dom";
 import { ContextProvider } from './context';
-import { DialogContainer } from './containers/DialogContainer';
 
 function App() {
   return <ContextProvider>
