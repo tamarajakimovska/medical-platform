@@ -65,6 +65,11 @@ export const MainContainer = ({ children }: Props) => {
     const navigate = useNavigate();
     const state = useContext(Context);
 
+    const onAddPatient = () => {
+        state.setDialogMode('add');
+        state.setIsAddPatientDialogOpen(true)
+    }
+
     return <Box display={'flex'}>
         <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'}>
             <LogoStyle> <img src={logo} /></LogoStyle>
@@ -93,7 +98,7 @@ export const MainContainer = ({ children }: Props) => {
                 <NavItem className={location.pathname === '/payments' ? 'active' : ''}>Payments</NavItem>
             </Box></Units>
             <ButtonStyle>
-                <Button variant="contained" onClick={() => state.setIsAddPatientDialogOpen(true)}> <AddIcon /> Add Patient</Button>
+                <Button variant="contained" onClick={() => onAddPatient()}> <AddIcon /> Add Patient</Button>
             </ButtonStyle>
         </Box>
         <Box width={'100%'}>

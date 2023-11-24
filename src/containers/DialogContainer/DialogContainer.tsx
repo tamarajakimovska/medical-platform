@@ -30,13 +30,18 @@ export const DialogContainer = () => {
         }
     }
 
+    const onDialogClose = () => {
+        state.setIsAddPatientDialogOpen(false)
+        state.setDialogPatient({});
+    }
+
     return (
         <React.Fragment>
             <PatientDialog
                 isOpen={state.isAddPatientDialogOpen}
                 mode={state.dialogMode}
                 patient={state.dialogPatient}
-                onClose={() => state.setIsAddPatientDialogOpen(false)}
+                onClose={() => onDialogClose()}
                 onSubmit={(patient: any) => state.dialogMode === 'add' ? onAddPatient(patient) : null}
             />
         </React.Fragment>

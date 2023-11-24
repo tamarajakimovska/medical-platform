@@ -45,6 +45,16 @@ export const AppointmentsContainer = () => {
         getPatients();
     }, [])
 
+    const onEdit = (patient: any) => {
+        state.setDialogMode('edit');
+        state.setDialogPatient(patient);
+        state.setIsAddPatientDialogOpen(true);
+    };
+
+    const onDelete = () => {
+
+    };
+
     return <React.Fragment>
         <Title>Appointments</Title>
         {
@@ -61,7 +71,11 @@ export const AppointmentsContainer = () => {
                         <TableBody>
                             {state.patients.map((currentPatient: any) => {
                                 return <TableRow>
-                                    <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} />
+                                    <Appointment
+                                        patient={currentPatient}
+                                        onEditClick={() => onEdit(currentPatient)}
+                                        onDeleteClick={() => onDelete()}
+                                    />
                                 </TableRow>
                             })}
                         </TableBody>

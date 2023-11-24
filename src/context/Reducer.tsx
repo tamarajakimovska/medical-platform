@@ -4,7 +4,9 @@ export enum Actions {
     GET_PATIENTS = 'GET_PATIENTS',
     GET_PATIENTS_SUCCESS = 'GET_PATIENTS_SUCCESS',
     GET_PATIENTS_FAIL = 'GET_PATIENTS_FAIL',
-    SET_IS_ADD_PATIENT_DIALOG_OPEN = 'SET_IS_ADD_PATIENT_DIALOG_OPEN'
+    SET_IS_ADD_PATIENT_DIALOG_OPEN = 'SET_IS_ADD_PATIENT_DIALOG_OPEN',
+    SET_DIALOG_MODE = 'SET_DIALOG_MODE',
+    SET_DIALOG_PATIENT = 'SET_DIALOG_PATIENT'
 };
 
 type Action = {
@@ -35,6 +37,16 @@ export const Reducer = (state: GlobalState, action: Action) => {
             return {
                 ...state,
                 isAddPatientDialogOpen: action.payload
+            }
+        case Actions.SET_DIALOG_MODE:
+            return {
+                ...state,
+                dialogMode: action.payload
+            }
+        case Actions.SET_DIALOG_PATIENT:
+            return {
+                ...state,
+                dialogPatient: action.payload
             }
         default:
             return state

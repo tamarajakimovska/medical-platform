@@ -114,7 +114,10 @@ export const DashboardContainer = () => {
                                 <TableBody>
                                     {state.patients.map((currentPatient: any) => {
                                         return <TableRow>
-                                            <Appointment image={currentPatient.image} name={currentPatient.name} email={currentPatient.email} date={currentPatient.date} visitTime={currentPatient.visitTime} number={currentPatient.number} doctor={currentPatient.doctor} injury={currentPatient.injury} areActionsVisible={false} />
+                                            <Appointment
+                                                patient={currentPatient}
+                                                areActionsVisible={false}
+                                            />
                                         </TableRow>
                                     })}
                                 </TableBody>

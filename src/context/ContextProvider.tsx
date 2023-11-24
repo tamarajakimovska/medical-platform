@@ -15,7 +15,9 @@ export const initialState: GlobalState = {
     getPatients: () => null,
     getPatientsSuccess: (patients: any) => null,
     getPatientsFail: () => null,
-    setIsAddPatientDialogOpen: () => null
+    setIsAddPatientDialogOpen: () => null,
+    setDialogMode: (mode: 'add' | 'edit') => null,
+    setDialogPatient: (patient: any) => null
 }
 
 export const Context = createContext<GlobalState>(initialState);
@@ -39,6 +41,14 @@ export const ContextProvider = ({ children }: Props) => {
         dispatch({ type: Actions.SET_IS_ADD_PATIENT_DIALOG_OPEN, payload: isOpen });
     }
 
+    const setDialogMode = (mode: 'add' | 'edit') => {
+        dispatch({ type: Actions.SET_DIALOG_MODE, payload: mode })
+    }
+
+    const setDialogPatient = (patient: any) => {
+        dispatch({ type: Actions.SET_DIALOG_PATIENT, payload: patient });
+    }
+
     console.log('state', state);
 
     return <Context.Provider
@@ -51,8 +61,10 @@ export const ContextProvider = ({ children }: Props) => {
             getPatients: () => getPatients(),
             getPatientsSuccess: (patients: any) => getPatientsSuccess(patients),
             getPatientsFail: () => getPatientsFail(),
-            setIsAddPatientDialogOpen: (isOpen: boolean) => setIsAddPatientDialogOpen(isOpen)
+            setIsAddPatientDialogOpen: (isOpen: boolean) => setIsAddPatientDialogOpen(isOpen),
+            setDialogMode: (mode: 'add' | 'edit') => setDialogMode(mode),
+            setDialogPatient: (patient: any) => setDialogPatient(patient)
         }}>
         {children}
-    </Context.Provider>
+    </Context.Provider >
 }

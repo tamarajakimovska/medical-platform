@@ -8,4 +8,6 @@ export interface GlobalState {
     getPatientsSuccess: (patients: any) => void,
     getPatientsFail: () => void,
     setIsAddPatientDialogOpen: (isOpen: boolean) => void,
+    setDialogMode: (mode: 'add' | 'edit') => void;
+    setDialogPatient: (patient: any) => void;
 }
