@@ -37,6 +37,12 @@ export const PatientsContainer = () => {
         }
     };
 
+    const onEditPatient = async (patient: any) => {
+        state.setDialogMode('edit');
+        state.setDialogPatient(patient);
+        state.setIsAddPatientDialogOpen(true);
+    }
+
     if (state.isLoadingPatients) {
         return <div>Loading patients ...</div>
     }
@@ -61,7 +67,7 @@ export const PatientsContainer = () => {
                     return <TableRow>
                         <Patient
                             patient={currentPatient}
-                            onEditClick={() => console.log('Edit')}
+                            onEditClick={() => onEditPatient(currentPatient)}
                             onDeleteClick={() => onDelete(currentPatient)}
                         />
                     </TableRow>

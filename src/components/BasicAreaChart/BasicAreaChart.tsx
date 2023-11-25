@@ -1,16 +1,22 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-export const BasicLineChart = () => {
+export const BasicAreaChart = () => {
     const state: any = {
-        series: [{
-            name: "Patients",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 99, 85, 127]
-        }],
+        series: [
+            {
+                name: "2022",
+                data: [97, 31, 65, 21, 39, 102, 49, 29, 58, 99, 185, 36]
+            },
+            {
+                name: "2023",
+                data: [40, 71, 35, 121, 49, 62, 69, 91, 148, 99, 85, 127]
+            },
+        ],
         options: {
             chart: {
                 height: 350,
-                type: 'line',
+                type: 'area',
                 zoom: {
                     enabled: false
                 },
@@ -22,7 +28,7 @@ export const BasicLineChart = () => {
                 enabled: false
             },
             stroke: {
-                curve: 'straight'
+                curve: 'smooth'
             },
             grid: {
                 row: {
@@ -35,5 +41,5 @@ export const BasicLineChart = () => {
             }
         },
     };
-    return <ReactApexChart options={state.options} series={state.series} type="line" height={350} />
+    return <ReactApexChart options={state.options} series={state.series} type="area" height={350} />
 };

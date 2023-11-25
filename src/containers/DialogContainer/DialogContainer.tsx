@@ -30,6 +30,29 @@ export const DialogContainer = () => {
         }
     }
 
+    const onEditPatient = async (patient: any) => {
+        try {
+            const response = await axios.put(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`, {
+                ...patient
+            });
+            console.log('Success', response);
+        } catch {
+            console.log('Fail');
+        } finally {
+            state.setIsAddPatientDialogOpen(false);
+            // TO-DO: Create a hook for Refetch the patients
+            try {
+                state.getPatients();
+                const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
+
+                state.getPatientsSuccess(response.data);
+            } catch (error) {
+                state.getPatientsFail();
+            }
+        }
+    }
+
+
     const onDialogClose = () => {
         state.setIsAddPatientDialogOpen(false)
         state.setDialogPatient({});
@@ -42,7 +65,7 @@ export const DialogContainer = () => {
                 mode={state.dialogMode}
                 patient={state.dialogPatient}
                 onClose={() => onDialogClose()}
-                onSubmit={(patient: any) => state.dialogMode === 'add' ? onAddPatient(patient) : null}
+                onSubmit={(patient: any) => state.dialogMode === 'add' ? onAddPatient(patient) : onEditPatient(patient)}
             />
         </React.Fragment>
     );

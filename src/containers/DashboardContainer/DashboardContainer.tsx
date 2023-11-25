@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Appointment, BasicLineChart, DashboardCart, DonutChart } from "../../components";
+import { Appointment, BasicAreaChart, DashboardCart, DonutChart } from "../../components";
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import SickIcon from '@mui/icons-material/Sick';
@@ -64,11 +64,17 @@ export const DashboardContainer = () => {
             })}
         </Box>
         <Box mt={3}>
-            <BasicLineChart />
+            <Income> <b>Hospital survey</b></Income>
+            <Box my={1}>
+                <IncomeInCurrentMonth>Number of patients in {new Date().getFullYear()}</IncomeInCurrentMonth>
+            </Box>
+            <BasicAreaChart />
         </Box>
         <Box mt={3}>
             <Income> <b>Income</b></Income>
-            <IncomeInCurrentMonth>Income in current month</IncomeInCurrentMonth>
+            <Box my={1}>
+                <IncomeInCurrentMonth>Income in current month</IncomeInCurrentMonth>
+            </Box>
             <AreaChart />
         </Box>
         <Box display={'flex'} justifyContent={'space-between'}>

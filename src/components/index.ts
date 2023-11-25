@@ -5,7 +5,7 @@ export * from './Patient';
 export * from './Payment';
 export * from './DonutChart';
 export * from './DashboardCart';
-export * from './BasicLineChart';
+export * from './BasicAreaChart';
 export * from './AreaChart';
 export * from './PatientDialog';
 
