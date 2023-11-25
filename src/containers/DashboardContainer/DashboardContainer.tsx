@@ -5,9 +5,9 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import SickIcon from '@mui/icons-material/Sick';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaidIcon from '@mui/icons-material/Paid';
-import axios from "axios";
 import { Context } from "../../context";
 import { AreaChart } from "../../components";
+import { useGetPatients } from "../../hooks/use-get-patients.hook";
 
 
 const DASHBOARD_CART = [
@@ -55,24 +55,7 @@ export const DashboardContainer = () => {
     // const [patients, setPatients] = useState<any>([]);
     const state = useContext(Context);
 
-    useEffect(() => {
-        const getPatients = async () => {
-            // Do not remove this!!!!!
-            // const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
-            // response.status === 200 ? setPatients(response.data) : setPatients([]);
-            if (!state.patients.length)
-                try {
-                    state.getPatients();
-                    const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
-
-                    state.getPatientsSuccess(response.data);
-                } catch (error) {
-                    state.getPatientsFail();
-                }
-        }
-
-        getPatients();
-    }, [])
+    useGetPatients();
 
     return <React.Fragment>
         <Box display={'flex'} justifyContent={'space-between'}>

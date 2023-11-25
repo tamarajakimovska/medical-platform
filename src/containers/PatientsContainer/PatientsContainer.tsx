@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import { Patient } from "../../components";
 import axios from "axios";
+import { useGetPatients } from "../../hooks";
+import { Context } from "../../context";
 
 
 const Title = styled('h3')({
@@ -12,17 +14,33 @@ const Title = styled('h3')({
 })
 
 export const PatientsContainer = () => {
-    const [patients, setPatients] = useState<any>([]);
+    const state = useContext(Context);
 
-    useEffect(() => {
-        const getPatients = async () => {
-            const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
+    useGetPatients();
 
-            response.status === 200 ? setPatients(response.data) : setPatients([]);
+    const onDelete = async (patient: any) => {
+        try {
+            const response = await axios.delete(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`)
+
+            if (response.status === 200) {
+                try {
+                    state.getPatients();
+                    const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
+
+                    state.getPatientsSuccess(response.data);
+                } catch (error) {
+                    state.getPatientsFail();
+                }
+            }
+        } catch {
+            console.log("Delete failed");
         }
+    };
 
-        getPatients();
-    }, [])
+    if (state.isLoadingPatients) {
+        return <div>Loading patients ...</div>
+    }
+
     return <TableContainer component={Paper}>
         <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
             <TableHead style={{ backgroundColor: '#336cfb' }}>
@@ -39,9 +57,13 @@ export const PatientsContainer = () => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {patients.map((currentOurPatient: any) => {
+                {state.patients.map((currentPatient: any) => {
                     return <TableRow>
-                        <Patient image={currentOurPatient.image} name={currentOurPatient.name} id={currentOurPatient.id} age={currentOurPatient.age} adress={currentOurPatient.adress} number={currentOurPatient.number} lastVisit={currentOurPatient.lastVisit} />
+                        <Patient
+                            patient={currentPatient}
+                            onEditClick={() => console.log('Edit')}
+                            onDeleteClick={() => onDelete(currentPatient)}
+                        />
                     </TableRow>
                 })}
             </TableBody>

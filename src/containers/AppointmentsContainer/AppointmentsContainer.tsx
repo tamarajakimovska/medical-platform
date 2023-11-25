@@ -4,6 +4,7 @@ import { Appointment } from "../../components";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import axios from "axios";
 import { Context } from "../../context";
+import { useGetPatients } from "../../hooks";
 
 
 const Title = styled('h2')({
@@ -13,25 +14,21 @@ const Title = styled('h2')({
 })
 
 export const AppointmentsContainer = () => {
-    // const [patients, setPatients] = useState<any>([])
     const state = useContext(Context);
 
-    // useEffect(() => {
-    //     const getPatients = async () => {
-    //         const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/appointments');
+    useGetPatients();
 
-    //         response.status === 200 ? setPatients(response.data) : setPatients([]);
-    //     }
+    const onEdit = async (patient: any) => {
+        state.setDialogMode('edit');
+        state.setDialogPatient(patient);
+        state.setIsAddPatientDialogOpen(true);
+    };
 
-    //     getPatients();
-    // }, []);
+    const onDelete = async (patient: any) => {
+        try {
+            const response = await axios.delete(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`)
 
-    useEffect(() => {
-        const getPatients = async () => {
-            // Do not remove this!!!!!
-            // const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
-            // response.status === 200 ? setPatients(response.data) : setPatients([]);
-            if (!state.patients.length)
+            if (response.status === 200) {
                 try {
                     state.getPatients();
                     const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
@@ -40,19 +37,10 @@ export const AppointmentsContainer = () => {
                 } catch (error) {
                     state.getPatientsFail();
                 }
+            }
+        } catch {
+            console.log("Delete failed");
         }
-
-        getPatients();
-    }, [])
-
-    const onEdit = (patient: any) => {
-        state.setDialogMode('edit');
-        state.setDialogPatient(patient);
-        state.setIsAddPatientDialogOpen(true);
-    };
-
-    const onDelete = () => {
-
     };
 
     return <React.Fragment>
@@ -74,7 +62,7 @@ export const AppointmentsContainer = () => {
                                     <Appointment
                                         patient={currentPatient}
                                         onEditClick={() => onEdit(currentPatient)}
-                                        onDeleteClick={() => onDelete()}
+                                        onDeleteClick={() => onDelete(currentPatient)}
                                     />
                                 </TableRow>
                             })}

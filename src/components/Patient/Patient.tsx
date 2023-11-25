@@ -5,40 +5,30 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 interface Props {
-    image: string;
-    name: string;
-    id: number;
-    age: number;
-    adress: string;
-    number: string;
-    lastVisit: string;
-
+    patient: any
+    onEditClick?: (patient: any) => void;
+    onDeleteClick?: (patient: any) => void;
 }
 
-
-
-export const Patient = ({ image, name, id, age, adress, number, lastVisit }: Props) => {
+export const Patient = ({ patient, onEditClick, onDeleteClick }: Props) => {
     return (<React.Fragment>
-        <TableCell><img src={image} alt="patient" style={{ borderRadius: '50%' }} /></TableCell>
-        <TableCell align="left">{name}</TableCell>
-        <TableCell align="left">{id}</TableCell>
-        <TableCell align="left">{age}</TableCell>
-        <TableCell align="left">{adress}</TableCell>
-        <TableCell align="left">{number}</TableCell>
-        <TableCell align="left">{lastVisit}</TableCell>
+        <TableCell><img src={patient.image} width='100%' alt="patient" style={{ borderRadius: '50%', width: '32px', height: '32px' }} /></TableCell>
+        <TableCell align="left">{patient.name}</TableCell>
+        <TableCell align="left">{patient.id}</TableCell>
+        <TableCell align="left">{patient.age}</TableCell>
+        <TableCell align="left">{patient.adress}</TableCell>
+        <TableCell align="left">{patient.number}</TableCell>
+        <TableCell align="left">{patient.lastVisit}</TableCell>
         <TableCell align="left">
             <Button variant="contained" color="success">
                 Approved
             </Button>
         </TableCell>
-        <TableCell align="left" >
-            <Fab size="small" style={{ backgroundColor: 'black', color: 'white', }} aria-label="add">
-                <AccountBoxIcon />
-            </Fab>
-            <Fab size="small" color="primary" aria-label="add" >
+        <TableCell align="left" style={{ display: 'flex' }} >
+            <Fab size="small" color="primary" aria-label="add" onClick={() => onEditClick && onEditClick(patient)} >
                 <EditIcon />
             </Fab>
-            <Fab size="small" style={{ backgroundColor: 'red', color: 'white' }} aria-label="add">
+            <Fab size="small" style={{ backgroundColor: 'red', color: 'white' }} aria-label="add" onClick={() => onDeleteClick && onDeleteClick(patient)}>
                 <DeleteIcon />
             </Fab>
         </TableCell>
