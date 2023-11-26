@@ -5,3 +5,4 @@ export * from './MainContainer';
 export * from './PatientsContainer';
 export * from './PaymentsContainer';
 export * from './DashboardContainer';
+export * from './DoctorProfileContainer';

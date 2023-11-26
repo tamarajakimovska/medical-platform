@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { AppointmentsContainer, DashboardContainer, DeparmentsInfoContainer, DoctorsInfoContainer, MainContainer, PatientsContainer, PaymentsContainer } from './containers';
+import { AppointmentsContainer, DashboardContainer, DeparmentsInfoContainer, DoctorProfileContainer, DoctorsInfoContainer, MainContainer, PatientsContainer, PaymentsContainer } from './containers';
 import {
   BrowserRouter,
   Route,
@@ -19,6 +19,7 @@ function App() {
           <Route path="/appointments" element={<AppointmentsContainer />} />
           <Route path="/patients" element={<PatientsContainer />} />
           <Route path="/payments" element={<PaymentsContainer />} />
+          <Route path="/profile" element={<DoctorProfileContainer />} />
         </Routes>
       </MainContainer>
     </BrowserRouter>

@@ -8,4 +8,6 @@ export * from './DashboardCart';
 export * from './BasicAreaChart';
 export * from './AreaChart';
 export * from './PatientDialog';
+export * from './DoctorProfile';
+export * from './DoctorTimeline';
 

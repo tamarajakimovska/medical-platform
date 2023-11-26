@@ -1,4 +1,4 @@
-import { Box, Button, TextField, styled } from "@mui/material";
+import { Box, Button, IconButton, InputBase, Paper, styled } from "@mui/material";
 import React, { useContext } from "react";
 import logo from "../../images/logo.svg";
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
@@ -10,10 +10,10 @@ import PaymentsIcon from '@mui/icons-material/Payments';
 import { Payment } from "@mui/icons-material";
 import AddIcon from '@mui/icons-material/Add';
 import { useLocation, useNavigate } from "react-router";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import image from '../../images/patient1.jpeg';
 import { Context } from "../../context";
 import { DialogContainer } from "../DialogContainer";
+import SearchIcon from '@mui/icons-material/Search';
 
 
 interface Props {
@@ -50,15 +50,6 @@ const ButtonStyle = styled('div')({
     margin: '10%'
 })
 
-// const SearchInput = styled('div')({
-//     backgroundColor: 'var(--input - bg - color)',
-//     border: '1px solid #ebebeb',
-//     borderRadius: '20px',
-//     boxShadow: 'none',
-//     color: '#1f2022',
-//     display: 'flex',
-
-// })
 
 export const MainContainer = ({ children }: Props) => {
     const location = useLocation();
@@ -104,10 +95,24 @@ export const MainContainer = ({ children }: Props) => {
         <Box width={'100%'}>
             <Box maxWidth={'1140px'} margin={'0 auto'} pt={3}>
                 <Box mb={4} display={'flex'} justifyContent={'space-between'}>
-                    <Box> <TextField id="outlined-basic" label="Search" variant="outlined" size="small" /> </Box>
                     <Box>
-                        <NotificationsActiveIcon />
-                        <img src={image} alt="profile" width={'50%'} style={{ borderRadius: '50%' }} />
+                        <Paper
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                        >
+                            <IconButton sx={{ p: '10px' }} aria-label="menu">
+                            </IconButton>
+                            <InputBase
+                                sx={{ ml: 1, flex: 1 }}
+                                placeholder="Search"
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                            <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                                <SearchIcon />
+                            </IconButton>
+                        </Paper>
+                    </Box>
+                    <Box>
+                        <img src={image} alt="profile" width={'100%'} style={{ borderRadius: '50%' }} />
                     </Box>
                 </Box>
                 <Box>{children}</Box>

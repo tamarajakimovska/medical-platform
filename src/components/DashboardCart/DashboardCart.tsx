@@ -32,7 +32,7 @@ const NameStyle = styled('div')({
 
 const CountStyle = styled('div')({
     fontSize: '20px',
-    color: 'rgb(51, 108, 251)',
+    color: 'rgba(6, 137, 255, 0.8)',
     lineHeight: '1.4'
 })
 

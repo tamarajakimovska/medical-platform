@@ -88,6 +88,65 @@ export const PatientDialog = ({ isOpen, mode, patient, onClose, onSubmit }: Prop
                     value={localPatient.address || ''}
                     onChange={(event) => setLocalPatient({ ...localPatient, address: event.target.value })}
                 />
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="email"
+                    label="E-Mail"
+                    type="email"
+                    fullWidth
+                    variant="standard"
+                    value={localPatient.email || ''}
+                    onChange={(event) => setLocalPatient({ ...localPatient, email: event.target.value })}
+                />
+                <Box display={'flex'}>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="date"
+                        label="Date"
+                        type="date"
+                        fullWidth
+                        variant="standard"
+                        value={localPatient.date || ''}
+                        onChange={(event) => setLocalPatient({ ...localPatient, date: event.target.value })}
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="visitTime"
+                        label="Visit Time"
+                        type="visitTime"
+                        fullWidth
+                        variant="standard"
+                        value={localPatient.visitTime || ''}
+                        onChange={(event) => setLocalPatient({ ...localPatient, visitTime: event.target.value })}
+                    />
+                </Box>
+                <Box display={'flex'}>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="doctor"
+                        label="Doctor"
+                        type="doctor"
+                        fullWidth
+                        variant="standard"
+                        value={localPatient.doctor || ''}
+                        onChange={(event) => setLocalPatient({ ...localPatient, doctor: event.target.value })}
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="injury"
+                        label="Injury"
+                        type="injury"
+                        fullWidth
+                        variant="standard"
+                        value={localPatient.injury || ''}
+                        onChange={(event) => setLocalPatient({ ...localPatient, injury: event.target.value })}
+                    />
+                </Box>
             </DialogContent>
             <DialogActions>
                 <Button onClick={() => onClose()}>Cancel</Button>
