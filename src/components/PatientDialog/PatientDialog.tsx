@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from "@mui/material";
 import { useState } from "react";
+import dayjs from 'dayjs';
 
 interface Props {
     isOpen: boolean;
@@ -105,10 +106,11 @@ export const PatientDialog = ({ isOpen, mode, patient, onClose, onSubmit }: Prop
                         margin="dense"
                         id="date"
                         label="Date"
-                        type="date"
                         fullWidth
                         variant="standard"
-                        value={localPatient.date || ''}
+                        type='date'
+                        defaultValue={dayjs(new Date()).format("YYYY-MM-DD")}
+                        value={dayjs(localPatient?.date).format("YYYY-MM-DD") || ''}
                         onChange={(event) => setLocalPatient({ ...localPatient, date: event.target.value })}
                     />
                     <TextField

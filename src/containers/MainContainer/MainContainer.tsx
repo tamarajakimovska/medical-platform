@@ -7,7 +7,6 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaymentsIcon from '@mui/icons-material/Payments';
-import { Payment } from "@mui/icons-material";
 import AddIcon from '@mui/icons-material/Add';
 import { useLocation, useNavigate } from "react-router";
 import image from '../../images/patient1.jpeg';
@@ -58,6 +57,9 @@ export const MainContainer = ({ children }: Props) => {
 
     const onAddPatient = () => {
         state.setDialogMode('add');
+        state.setDialogPatient({
+            date: new Date()
+        })
         state.setIsAddPatientDialogOpen(true)
     }
 
