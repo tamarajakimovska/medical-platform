@@ -6,3 +6,4 @@ export * from './PatientsContainer';
 export * from './PaymentsContainer';
 export * from './DashboardContainer';
 export * from './DoctorProfileContainer';
+export * from './EditAccountContainer';

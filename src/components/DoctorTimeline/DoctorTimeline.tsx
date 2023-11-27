@@ -6,11 +6,13 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import MedicationIcon from '@mui/icons-material/Medication';
+import VaccinesIcon from '@mui/icons-material/Vaccines';
 import Typography from '@mui/material/Typography';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import SearchIcon from '@mui/icons-material/Search';
 
 export const DoctorTimeline = () => {
     return <Timeline position="alternate">
@@ -25,16 +27,16 @@ export const DoctorTimeline = () => {
             </TimelineOppositeContent>
             <TimelineSeparator>
                 <TimelineConnector />
-                <TimelineDot>
-                    <FastfoodIcon />
+                <TimelineDot style={{ backgroundColor: "#677DEA" }}>
+                    <AccountCircleIcon />
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent sx={{ py: '12px', px: 2 }}>
                 <Typography variant="h6" component="span">
-                    Eat
+                    New prescription
                 </Typography>
-                <Typography>Because you need strength</Typography>
+                <Typography>Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.</Typography>
             </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -47,46 +49,104 @@ export const DoctorTimeline = () => {
             </TimelineOppositeContent>
             <TimelineSeparator>
                 <TimelineConnector />
-                <TimelineDot color="primary">
-                    <LaptopMacIcon />
+                <TimelineDot style={{ backgroundColor: "#EC63A6" }}>
+                    <CalendarMonthIcon />
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent sx={{ py: '12px', px: 2 }}>
+            <TimelineContent>
                 <Typography variant="h6" component="span">
-                    Code
+                    Appointment
                 </Typography>
-                <Typography>Because it&apos;s awesome!</Typography>
+                <Typography> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam. </p></Typography>
             </TimelineContent>
         </TimelineItem>
         <TimelineItem>
+            <TimelineOppositeContent
+                sx={{ m: 'auto 0' }}
+                variant="body2"
+                color="text.secondary"
+            >
+                Now
+            </TimelineOppositeContent>
             <TimelineSeparator>
                 <TimelineConnector />
-                <TimelineDot color="primary" variant="outlined">
-                    <HotelIcon />
+                <TimelineDot style={{ backgroundColor: "#F56565" }}>
+                    <MedicationIcon />
                 </TimelineDot>
-                <TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+                <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent sx={{ py: '12px', px: 2 }}>
+            <TimelineContent>
                 <Typography variant="h6" component="span">
-                    Sleep
+                    Medication
                 </Typography>
-                <Typography>Because you need rest</Typography>
+                <Typography>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.</Typography>
             </TimelineContent>
         </TimelineItem>
         <TimelineItem>
+            <TimelineOppositeContent
+                sx={{ m: 'auto 0' }}
+                variant="body2"
+                color="text.secondary"
+            >
+                25 July
+            </TimelineOppositeContent>
             <TimelineSeparator>
-                <TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-                <TimelineDot color="secondary">
-                    <RepeatIcon />
+                <TimelineConnector sx={{}} />
+                <TimelineDot style={{ backgroundColor: "green" }}>
+                    <VaccinesIcon />
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent sx={{ py: '12px', px: 2 }}>
                 <Typography variant="h6" component="span">
-                    Repeat
+                    Operation
                 </Typography>
-                <Typography>Because this is the life you love!</Typography>
+                <Typography>Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.</Typography>
+            </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+            <TimelineOppositeContent
+                sx={{ m: 'auto 0' }}
+                variant="body2"
+                color="text.secondary"
+            >
+                4h ago
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+                <TimelineConnector />
+                <TimelineDot style={{ backgroundColor: "#EBC94A" }}>
+                    <PersonAddIcon />
+                </TimelineDot>
+                <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+                <Typography variant="h6" component="span">
+                    New patient
+                </Typography>
+                <Typography>Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.</Typography>
+            </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+            <TimelineOppositeContent
+                sx={{ m: 'auto 0' }}
+                variant="body2"
+                color="text.secondary"
+            >
+                20 Sep
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+                <TimelineConnector />
+                <TimelineDot style={{ backgroundColor: "#EC8C3C" }}>
+                    <SearchIcon />
+                </TimelineDot>
+                <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent sx={{ py: '12px', px: 2 }}>
+                <Typography variant="h6" component="span">
+                    Examination
+                </Typography>
+                <Typography>Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.</Typography>
             </TimelineContent>
         </TimelineItem>
     </Timeline>

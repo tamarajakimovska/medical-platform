@@ -7,6 +7,7 @@ import {
   Routes
 } from "react-router-dom";
 import { ContextProvider } from './context';
+import { EditAccountContainer } from './containers/EditAccountContainer/EditAccountContainer';
 
 function App() {
   return <ContextProvider>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/patients" element={<PatientsContainer />} />
           <Route path="/payments" element={<PaymentsContainer />} />
           <Route path="/profile" element={<DoctorProfileContainer />} />
+          <Route path="/account" element={<EditAccountContainer />} />
         </Routes>
       </MainContainer>
     </BrowserRouter>

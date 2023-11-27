@@ -10,4 +10,4 @@ export * from './AreaChart';
 export * from './PatientDialog';
 export * from './DoctorProfile';
 export * from './DoctorTimeline';
-
+export * from './EditAccount';
