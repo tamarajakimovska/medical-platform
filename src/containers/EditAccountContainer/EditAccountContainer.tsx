@@ -1,6 +1,6 @@
 import React from "react";
 import { EditAccount } from "../../components";
-import Profile1 from '../../images/patient9.jpeg';
+import user from "../../images/userImage.jpeg";
 import { Box, Button, styled } from "@mui/material";
 
 const Title = styled('h3')({
@@ -14,7 +14,7 @@ export const EditAccountContainer = () => {
     return <Box>
         <Title>Edit account</Title>
         <Box display={'flex'} alignItems={'center'}>
-            <img src={Profile1} style={{ borderRadius: '50%' }} width={'66px'} />
+            <img src={user} style={{ borderRadius: '50%' }} width={'86px'} height={"92vh"} />
             <Box ml={5}>
                 <Button variant="contained">Select Image</Button>
             </Box>

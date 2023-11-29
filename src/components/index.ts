@@ -11,3 +11,7 @@ export * from './PatientDialog';
 export * from './DoctorProfile';
 export * from './DoctorTimeline';
 export * from './EditAccount';
+export * from './Loaders';
+export * from './UserProfile';
+export * from './UserContactInformation';
+export * from './UserEducation';

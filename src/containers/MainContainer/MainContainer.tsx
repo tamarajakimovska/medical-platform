@@ -9,7 +9,7 @@ import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import AddIcon from '@mui/icons-material/Add';
 import { useLocation, useNavigate } from "react-router";
-import image from '../../images/patient1.jpeg';
+import image from '../../images/userImage.jpeg';
 import { Context } from "../../context";
 import { DialogContainer } from "../DialogContainer";
 import SearchIcon from '@mui/icons-material/Search';
@@ -114,7 +114,7 @@ export const MainContainer = ({ children }: Props) => {
                         </Paper>
                     </Box>
                     <Box>
-                        <img src={image} alt="profile" width={'100%'} style={{ borderRadius: '50%' }} />
+                        <img src={image} alt="profile" width={'38px'} height={'38vh'} style={{ borderRadius: '50%' }} />
                     </Box>
                 </Box>
                 <Box>{children}</Box>

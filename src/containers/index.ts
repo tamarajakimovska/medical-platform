@@ -7,3 +7,4 @@ export * from './PaymentsContainer';
 export * from './DashboardContainer';
 export * from './DoctorProfileContainer';
 export * from './EditAccountContainer';
+export * from './UserProfileContainer';

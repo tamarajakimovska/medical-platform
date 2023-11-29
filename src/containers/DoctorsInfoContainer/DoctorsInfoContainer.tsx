@@ -2,8 +2,7 @@ import { Box, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { DoctorInfo } from "../../components";
 import axios from "axios";
-
-
+import { useNavigate } from "react-router";
 
 const Title = styled('h3')({
     color: 'rgba(31, 32, 34, .5)',
@@ -14,6 +13,7 @@ const Title = styled('h3')({
 
 export const DoctorsInfoContainer = () => {
     const [doctors, setDoctors] = useState<any>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getDoctors = async () => {
@@ -24,6 +24,12 @@ export const DoctorsInfoContainer = () => {
 
         getDoctors();
     }, []);
+
+    const onDoctorClick = (id: any) => {
+        navigate(`/profile/${id}`);
+    }
+
+    console.log('dd', doctors)
 
     return <React.Fragment>
         <Title>Doctors</Title>
@@ -36,7 +42,7 @@ export const DoctorsInfoContainer = () => {
             }}>
 
             {doctors.map((currentDoctor: any) => {
-                return <Box key={currentDoctor.name} flexBasis={'32%'} borderRadius={'4px'}>
+                return <Box key={currentDoctor.name} flexBasis={'32%'} borderRadius={'4px'} onClick={() => onDoctorClick(currentDoctor.id)} >
                     <DoctorInfo image={currentDoctor.image} name={currentDoctor.name} specialty={currentDoctor.specialty} adress={currentDoctor.adress} />
                 </Box>
             })}

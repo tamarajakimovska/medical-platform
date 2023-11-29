@@ -7,16 +7,41 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import MedicationIcon from '@mui/icons-material/Medication';
-import VaccinesIcon from '@mui/icons-material/Vaccines';
 import Typography from '@mui/material/Typography';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import SearchIcon from '@mui/icons-material/Search';
+import { getTimelineIcon, getTimelineIconColor } from '../../utils';
 
-export const DoctorTimeline = () => {
+interface Props {
+    timeline: any[];
+}
+
+export const DoctorTimeline = ({ timeline }: Props) => {
     return <Timeline position="alternate">
-        <TimelineItem>
+        {timeline?.map((item) => {
+            return <TimelineItem>
+                <TimelineOppositeContent
+                    sx={{ m: 'auto 0' }}
+                    align="right"
+                    variant="body2"
+                    color="text.secondary"
+                >
+                    {item.time}
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                    <TimelineConnector />
+                    <TimelineDot style={{ backgroundColor: getTimelineIconColor(item.icon) }}>
+                        {getTimelineIcon(item.icon)}
+                    </TimelineDot>
+                    <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent sx={{ py: '12px', px: 2 }}>
+                    <Typography variant="h6" component="span">
+                        {item.title}
+                    </Typography>
+                    <Typography>{item.description}</Typography>
+                </TimelineContent>
+            </TimelineItem>
+        })}
+        {/* <TimelineItem>
             <TimelineOppositeContent
                 sx={{ m: 'auto 0' }}
                 align="right"
@@ -148,6 +173,6 @@ export const DoctorTimeline = () => {
                 </Typography>
                 <Typography>Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.</Typography>
             </TimelineContent>
-        </TimelineItem>
+        </TimelineItem> */}
     </Timeline>
 }

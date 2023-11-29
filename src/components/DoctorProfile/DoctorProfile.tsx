@@ -1,36 +1,38 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
 
-export const DoctorProfile = () => {
+
+interface Props {
+    doctor: any
+}
+
+export const DoctorProfile = ({ doctor }: Props) => {
+
     return <Box>
+        <img src={doctor.image} width={'120px'} style={{ borderRadius: '50%', marginTop: '26px' }} />
         <Box pt={5}>
             <TextField
-                autoFocus
-                margin="dense"
                 id="name"
                 label="Name"
                 type="name"
                 variant="standard"
-                value='Dr.Sophie Mackins'
+                value={doctor?.name}
             />
-            <Box display={'flex'} justifyContent={'space-between'} width={'80%'}>
+            <Box display={'flex'} justifyContent={'space-between'} width={'80%'} mt={2}>
                 <TextField
-                    autoFocus
-                    margin="dense"
                     id="Speciality"
                     label="Speciality"
                     type="Speciality"
                     variant="standard"
-                    value='Gynecologist'
+                    value={doctor.specialty}
                 />
                 <TextField
-                    autoFocus
                     margin="dense"
                     id="gender"
                     label="Gender"
                     type="Gender"
                     variant="standard"
-                    value='Female'
+                    value={doctor.gender}
                 />
             </Box>
             <TextField
@@ -41,7 +43,7 @@ export const DoctorProfile = () => {
                 type="Address"
                 fullWidth
                 variant="standard"
-                value='795 Folsom Ave, Suite 600 San Francisco, CADGE 94107'
+                value={doctor.adress}
             />
         </Box>
     </Box >
