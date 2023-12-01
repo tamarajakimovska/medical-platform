@@ -15,3 +15,4 @@ export * from './Loaders';
 export * from './UserProfile';
 export * from './UserContactInformation';
 export * from './UserEducation';
+export * from './AddAppointmentDialog';

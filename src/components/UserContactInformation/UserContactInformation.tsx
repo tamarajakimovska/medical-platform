@@ -20,15 +20,15 @@ export const UserContactInformation = () => {
             <ContactInfoTitle>Contact Information</ContactInfoTitle>
         </Box>
         <Box display={'flex'} alignItems={'center'} mb={2}>
-            <LinkedInIcon style={{ fontSize: '26px', marginRight: '6px' }} />
+            <LinkedInIcon style={{ fontSize: '26px', marginRight: '6px', color: '#1776D1' }} />
             <a href="https://www.linkedin.com/in/tamara-jakimovska-869211240/">tamarajakimovska</a>
         </Box>
         <Box display={'flex'} alignItems={'center'} mb={2}>
-            <ContactPhoneIcon style={{ fontSize: '26px', marginRight: '6px' }} />
+            <ContactPhoneIcon style={{ fontSize: '26px', marginRight: '6px', }} />
             <div>+49 178 1432889</div>
         </Box>
         <Box display={'flex'} alignItems={'center'}>
-            <PlaceIcon style={{ fontSize: '26px', marginRight: '6px' }} />
+            <PlaceIcon style={{ fontSize: '26px', marginRight: '6px', color: '#F70100' }} />
             <div>Berlin, Germany</div>
         </Box>
     </Box >

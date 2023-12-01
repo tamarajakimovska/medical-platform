@@ -9,10 +9,10 @@ import VaccinesIcon from '@mui/icons-material/Vaccines';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import AddIcon from '@mui/icons-material/Add';
 import { useLocation, useNavigate } from "react-router";
-import image from '../../images/userImage.jpeg';
 import { Context } from "../../context";
 import { DialogContainer } from "../DialogContainer";
 import SearchIcon from '@mui/icons-material/Search';
+import { UserMenu } from "../../components/UserMenu";
 
 
 interface Props {
@@ -113,8 +113,8 @@ export const MainContainer = ({ children }: Props) => {
                             </IconButton>
                         </Paper>
                     </Box>
-                    <Box>
-                        <img src={image} alt="profile" width={'38px'} height={'38vh'} style={{ borderRadius: '50%' }} />
+                    <Box position={'relative'}>
+                        <UserMenu onClose={() => console.log('123...')} />
                     </Box>
                 </Box>
                 <Box>{children}</Box>
