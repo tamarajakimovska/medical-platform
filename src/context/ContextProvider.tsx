@@ -7,11 +7,16 @@ interface Props {
 }
 
 export const initialState: GlobalState = {
+    appointments: [],
+    isLoadingAppointments: false,
     patients: [],
     isLoadingPatients: false,
     isAddPatientDialogOpen: false,
     dialogMode: 'add',
     dialogPatient: {},
+    getAppointments: () => null,
+    getAppointmentsSuccess: (appointment: any) => null,
+    getAppointmentsFail: () => null,
     getPatients: () => null,
     getPatientsSuccess: (patients: any) => null,
     getPatientsFail: () => null,
@@ -37,6 +42,18 @@ export const ContextProvider = ({ children }: Props) => {
         dispatch({ type: Actions.GET_PATIENTS_FAIL });
     }
 
+    const getAppointments = () => {
+        dispatch({ type: Actions.GET_APPOINTMENTS });
+    }
+
+    const getAppointmentsSuccess = (appointments: any) => {
+        dispatch({ type: Actions.GET_APPOINTMENTS_SUCCESS, payload: appointments });
+    }
+
+    const getAppointmentsFail = () => {
+        dispatch({ type: Actions.GET_APPOINTMENTS_FAIL });
+    }
+
     const setIsAddPatientDialogOpen = (isOpen: boolean) => {
         dispatch({ type: Actions.SET_IS_ADD_PATIENT_DIALOG_OPEN, payload: isOpen });
     }
@@ -54,10 +71,15 @@ export const ContextProvider = ({ children }: Props) => {
     return <Context.Provider
         value={{
             patients: state.patients,
+            appointments: state.appointments,
             isLoadingPatients: state.isLoadingPatients,
+            isLoadingAppointments: state.isLoadingAppointments,
             isAddPatientDialogOpen: state.isAddPatientDialogOpen,
             dialogMode: state.dialogMode,
             dialogPatient: state.dialogPatient,
+            getAppointments: () => getAppointments(),
+            getAppointmentsSuccess: (appointments: any) => getAppointmentsSuccess(appointments),
+            getAppointmentsFail: () => getAppointmentsFail(),
             getPatients: () => getPatients(),
             getPatientsSuccess: (patients: any) => getPatientsSuccess(patients),
             getPatientsFail: () => getPatientsFail(),

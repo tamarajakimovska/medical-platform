@@ -4,6 +4,7 @@ import image from '../../images/userImage.jpeg';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router';
 
 interface Props {
     isOpen?: boolean;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export const UserMenu = ({ isOpen, onClose }: Props) => {
+    const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
@@ -21,6 +23,11 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleRedirect = (redirectionUrl: string) => {
+        handleClose();
+        navigate(redirectionUrl);
+    }
 
     return <Fragment>
         <Box onClick={handleClick}
@@ -59,15 +66,29 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 55 }}
         >
-            <MenuItem onClick={() => handleClose()}>
-                <ManageAccountsIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />  Edit Account
+            <MenuItem onClick={() => handleRedirect('/account')}>
+                <ManageAccountsIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />
+                Edit Account
             </MenuItem>
-            <MenuItem onClick={() => handleClose()}>
+            <MenuItem onClick={() => handleRedirect('/user')}>
                 <AccountCircleIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />  User Profile
             </MenuItem>
-            <MenuItem onClick={() => handleClose()}>
+            <MenuItem onClick={() => handleRedirect('/logout')}>
                 <LogoutIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />  Log Out
             </MenuItem>
         </Menu>
     </Fragment>
 }
+
+// function printHello() {}
+// Hello 
+
+// function printHello(name) {}
+// Hello `${name}` 
+// -> Hello Tamara
+// -> Goodbye
+
+// function printHello(name) {}
+// Hello `${name}` 
+// -> Hello Nikola
+// -> Goodbye

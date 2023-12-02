@@ -12,7 +12,8 @@ export const DialogContainer = () => {
             name: patient.name,
             age: patient.age,
             adress: patient.address,
-            number: patient.number
+            number: patient.number,
+            id: patient.id
         })
 
         // Close the dialog
@@ -31,6 +32,7 @@ export const DialogContainer = () => {
     }
 
     const onEditPatient = async (patient: any) => {
+        console.log('patient', patient);
         try {
             const response = await axios.put(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`, {
                 ...patient

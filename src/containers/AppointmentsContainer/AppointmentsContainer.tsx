@@ -4,7 +4,7 @@ import { Appointment } from "../../components";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import axios from "axios";
 import { Context } from "../../context";
-import { useGetPatients } from "../../hooks";
+import { useGetAppointments, useGetPatients } from "../../hooks";
 
 
 const Title = styled('h2')({
@@ -16,7 +16,7 @@ const Title = styled('h2')({
 export const AppointmentsContainer = () => {
     const state = useContext(Context);
 
-    useGetPatients();
+    useGetAppointments();
 
     const onEdit = async (patient: any) => {
         state.setDialogMode('edit');
@@ -46,7 +46,7 @@ export const AppointmentsContainer = () => {
     return <React.Fragment>
         <Title>Appointments</Title>
         {
-            state.isLoadingPatients ? <div>Loading patients ...</div> : (
+            state.isLoadingAppointments ? <div>Loading appointments ...</div> : (
                 <TableContainer component={Paper}>
                     <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)' }}>
                         <TableHead>
@@ -57,12 +57,12 @@ export const AppointmentsContainer = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {state.patients.map((currentPatient: any) => {
+                            {state.appointments.map((appointment: any) => {
                                 return <TableRow>
                                     <Appointment
-                                        patient={currentPatient}
-                                        onEditClick={() => onEdit(currentPatient)}
-                                        onDeleteClick={() => onDelete(currentPatient)}
+                                        patient={appointment}
+                                        onEditClick={() => onEdit(appointment)}
+                                        onDeleteClick={() => onDelete(appointment)}
                                     />
                                 </TableRow>
                             })}
