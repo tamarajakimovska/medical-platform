@@ -12,8 +12,10 @@ export const initialState: GlobalState = {
     patients: [],
     isLoadingPatients: false,
     isAddPatientDialogOpen: false,
+    isAppointmentDialogOpen: false,
     dialogMode: 'add',
     dialogPatient: {},
+    dialogAppointment: {},
     getAppointments: () => null,
     getAppointmentsSuccess: (appointment: any) => null,
     getAppointmentsFail: () => null,
@@ -21,8 +23,10 @@ export const initialState: GlobalState = {
     getPatientsSuccess: (patients: any) => null,
     getPatientsFail: () => null,
     setIsAddPatientDialogOpen: () => null,
+    setIsAddAppointmentDialogOpen: () => null,
     setDialogMode: (mode: 'add' | 'edit') => null,
-    setDialogPatient: (patient: any) => null
+    setDialogPatient: (patient: any) => null,
+    setDialogAppointment: (appointment: any) => null
 }
 
 export const Context = createContext<GlobalState>(initialState);
@@ -58,6 +62,10 @@ export const ContextProvider = ({ children }: Props) => {
         dispatch({ type: Actions.SET_IS_ADD_PATIENT_DIALOG_OPEN, payload: isOpen });
     }
 
+    const setIsAddAppointmentDialogOpen = (isOpen: boolean) => {
+        dispatch({ type: Actions.SET_IS_APPOINTMENT_DIALOG_OPEN, payload: isOpen });
+    }
+
     const setDialogMode = (mode: 'add' | 'edit') => {
         dispatch({ type: Actions.SET_DIALOG_MODE, payload: mode })
     }
@@ -65,6 +73,11 @@ export const ContextProvider = ({ children }: Props) => {
     const setDialogPatient = (patient: any) => {
         dispatch({ type: Actions.SET_DIALOG_PATIENT, payload: patient });
     }
+
+    const setDialogAppointment = (appointment: any) => {
+        dispatch({ type: Actions.SET_DIALOG_APPOINTMENT, payload: appointment })
+    }
+
 
     console.log('state', state);
 
@@ -75,8 +88,10 @@ export const ContextProvider = ({ children }: Props) => {
             isLoadingPatients: state.isLoadingPatients,
             isLoadingAppointments: state.isLoadingAppointments,
             isAddPatientDialogOpen: state.isAddPatientDialogOpen,
+            isAppointmentDialogOpen: state.isAppointmentDialogOpen,
             dialogMode: state.dialogMode,
             dialogPatient: state.dialogPatient,
+            dialogAppointment: state.dialogAppointment,
             getAppointments: () => getAppointments(),
             getAppointmentsSuccess: (appointments: any) => getAppointmentsSuccess(appointments),
             getAppointmentsFail: () => getAppointmentsFail(),
@@ -84,8 +99,10 @@ export const ContextProvider = ({ children }: Props) => {
             getPatientsSuccess: (patients: any) => getPatientsSuccess(patients),
             getPatientsFail: () => getPatientsFail(),
             setIsAddPatientDialogOpen: (isOpen: boolean) => setIsAddPatientDialogOpen(isOpen),
+            setIsAddAppointmentDialogOpen: (isOpen: boolean) => setIsAddAppointmentDialogOpen(isOpen),
             setDialogMode: (mode: 'add' | 'edit') => setDialogMode(mode),
-            setDialogPatient: (patient: any) => setDialogPatient(patient)
+            setDialogPatient: (patient: any) => setDialogPatient(patient),
+            setDialogAppointment: (appointment: any) => setDialogAppointment(appointment)
         }}>
         {children}
     </Context.Provider >

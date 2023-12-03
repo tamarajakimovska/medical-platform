@@ -8,8 +8,11 @@ export enum Actions {
     GET_APPOINTMENTS_SUCCESS = ' GET_APPOINTMENTS_SUCCESS',
     GET_APPOINTMENTS_FAIL = ' GET_APPOINTMENTS_FAIL',
     SET_IS_ADD_PATIENT_DIALOG_OPEN = 'SET_IS_ADD_PATIENT_DIALOG_OPEN',
+    SET_IS_APPOINTMENT_DIALOG_OPEN = '   SET_IS_APPOINTMENT_DIALOG_OPEN',
     SET_DIALOG_MODE = 'SET_DIALOG_MODE',
-    SET_DIALOG_PATIENT = 'SET_DIALOG_PATIENT'
+    SET_DIALOG_PATIENT = 'SET_DIALOG_PATIENT',
+    SET_DIALOG_APPOINTMENT = 'SET_DIALOG_APPOINTMENT'
+
 };
 
 type Action = {
@@ -67,7 +70,16 @@ export const Reducer = (state: GlobalState, action: Action) => {
                 ...state,
                 isLoadingAppointments: false
             }
-
+        case Actions.SET_IS_APPOINTMENT_DIALOG_OPEN:
+            return {
+                ...state,
+                isAppointmentDialogOpen: action.payload
+            }
+        case Actions.SET_DIALOG_APPOINTMENT:
+            return {
+                ...state,
+                dialogAppointment: action.payload
+            }
         default:
             return state
     }

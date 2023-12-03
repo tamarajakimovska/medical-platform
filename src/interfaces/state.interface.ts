@@ -4,8 +4,10 @@ export interface GlobalState {
     isLoadingPatients: boolean;
     isLoadingAppointments: boolean;
     isAddPatientDialogOpen: boolean;
+    isAppointmentDialogOpen: boolean;
     dialogMode: 'add' | 'edit';
     dialogPatient: any;
+    dialogAppointment: any;
     getAppointments: () => void,
     getAppointmentsSuccess: (appointments: any) => void,
     getAppointmentsFail: () => void,
@@ -13,6 +15,8 @@ export interface GlobalState {
     getPatientsSuccess: (patients: any) => void,
     getPatientsFail: () => void,
     setIsAddPatientDialogOpen: (isOpen: boolean) => void,
+    setIsAddAppointmentDialogOpen: (isOpen: boolean) => void,
     setDialogMode: (mode: 'add' | 'edit') => void;
     setDialogPatient: (patient: any) => void;
+    setDialogAppointment: (appointment: any) => void;
 }

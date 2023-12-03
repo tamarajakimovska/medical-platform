@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import { Appointment } from "../../components";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import axios from "axios";
 import { Context } from "../../context";
 import { useGetAppointments, useGetPatients } from "../../hooks";
+import AddIcon from '@mui/icons-material/Add';
 
 
 const Title = styled('h2')({
@@ -13,38 +14,41 @@ const Title = styled('h2')({
     width: '100%',
 })
 
+
+
 export const AppointmentsContainer = () => {
     const state = useContext(Context);
 
     useGetAppointments();
 
-    const onEdit = async (patient: any) => {
+    const onEdit = async (appointment: any) => {
         state.setDialogMode('edit');
-        state.setDialogPatient(patient);
-        state.setIsAddPatientDialogOpen(true);
+        state.setDialogAppointment(appointment);
+        state.setIsAddAppointmentDialogOpen(true);
     };
 
-    const onDelete = async (patient: any) => {
+    const onDelete = async (appointment: any) => {
         try {
-            const response = await axios.delete(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`)
-
-            if (response.status === 200) {
-                try {
-                    state.getPatients();
-                    const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
-
-                    state.getPatientsSuccess(response.data);
-                } catch (error) {
-                    state.getPatientsFail();
-                }
-            }
+            const response = await axios.delete(`https://6554a22a63cafc694fe6bb57.mockapi.io/appointments/${appointment.id}`)
         } catch {
             console.log("Delete failed");
+        } finally {
+            try {
+                state.getAppointments();
+                const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/appointments');
+
+                state.getAppointmentsSuccess(response.data);
+            } catch (error) {
+                state.getAppointmentsFail();
+            }
         }
     };
 
     return <React.Fragment>
-        <Title>Appointments</Title>
+        <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} >
+            <Title>Appointments</Title>
+            <Button variant="contained" onClick={() => state.setIsAddAppointmentDialogOpen(true)} style={{ maxHeight: '36px', minWidth: '200px' }}> <AddIcon /> Add Appointment</Button>
+        </Box>
         {
             state.isLoadingAppointments ? <div>Loading appointments ...</div> : (
                 <TableContainer component={Paper}>
