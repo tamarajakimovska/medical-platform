@@ -15,9 +15,6 @@ export const EditAccountContainer = () => {
         <Title>Edit account</Title>
         <Box display={'flex'} alignItems={'center'}>
             <img src={user} style={{ borderRadius: '50%' }} width={'86px'} height={"92vh"} />
-            <Box ml={5}>
-                <Button variant="contained">Select Image</Button>
-            </Box>
         </Box>
         <EditAccount />
     </Box >

@@ -68,26 +68,26 @@ export const MainContainer = ({ children }: Props) => {
             <LogoStyle> <img src={logo} /></LogoStyle>
             <Title>MEDICINE</Title>
             <Units onClick={() => navigate('/')}>
-                <DashboardCustomizeRoundedIcon />
+                <DashboardCustomizeRoundedIcon style={{ color: '#9D9D9D' }} />
                 <Box ml={1}>
                     <NavItem className={location.pathname === '/' ? 'active' : ''}>Dashboard</NavItem>
                 </Box>
             </Units>
-            <Units onClick={() => navigate('/appointments')}> <PersonSearchIcon />
+            <Units onClick={() => navigate('/appointments')}> <PersonSearchIcon style={{ color: '#9D9D9D' }} />
                 <Box ml={1}>
                     <NavItem className={location.pathname === '/appointments' ? 'active' : ''}>Appointments</NavItem>
                 </Box>
             </Units>
-            <Units onClick={() => navigate('/doctors')}> <GroupsIcon />  <Box ml={1}>
+            <Units onClick={() => navigate('/doctors')}> <GroupsIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
                 <NavItem className={location.pathname === '/doctors' ? 'active' : ''}>Doctors</NavItem>
             </Box></Units>
-            <Units onClick={() => navigate('/departments')}> <LocalHospitalIcon />  <Box ml={1}>
+            <Units onClick={() => navigate('/departments')}> <LocalHospitalIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
                 <NavItem className={location.pathname === '/departments' ? 'active' : ''}>Departments</NavItem>
             </Box></Units>
-            <Units onClick={() => navigate('/patients')}> <VaccinesIcon /> <Box ml={1}>
+            <Units onClick={() => navigate('/patients')}> <VaccinesIcon style={{ color: '#9D9D9D' }} /> <Box ml={1}>
                 <NavItem className={location.pathname === '/patients' ? 'active' : ''}>Patients</NavItem>
             </Box></Units>
-            <Units onClick={() => navigate('/payments')}> <PaymentsIcon />  <Box ml={1}>
+            <Units onClick={() => navigate('/payments')}> <PaymentsIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
                 <NavItem className={location.pathname === '/payments' ? 'active' : ''}>Payments</NavItem>
             </Box></Units>
             <ButtonStyle>

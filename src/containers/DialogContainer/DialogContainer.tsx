@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Context } from '../../context';
 import axios from 'axios';
-import { AppointmentDialog, PatientDialog } from '../../components';
+import { AppointmentDialog, PatientDialog, PaymentDialog } from '../../components';
 import { useId } from 'react';
+import { setTextRange } from 'typescript';
 
 export const DialogContainer = () => {
     const state = React.useContext(Context);
@@ -64,6 +65,32 @@ export const DialogContainer = () => {
         }
     }
 
+    const onAddPayment = async (payment: any) => {
+
+        const response = await axios.post('https://6555e1d584b36e3a431e8f4f.mockapi.io/payments', {
+            bill: payment.bill,
+            patient: payment.patient,
+            doctor: payment.doctor,
+            date: payment.date,
+            charges: payment.charges,
+            tax: payment.tax,
+            discount: payment.discount,
+            total: payment.total
+        })
+
+        if (response.status === 201) {
+            state.setIsPaymentDialogOpen(false);
+            try {
+                state.getPayments();
+                const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/payments');
+
+                state.getPaymentsSuccess(response.data);
+            } catch (error) {
+                state.getPaymentsFail();
+            }
+        }
+    }
+
 
     const onEditPatient = async (patient: any) => {
         console.log('patient', patient);
@@ -118,6 +145,10 @@ export const DialogContainer = () => {
         state.setDialogAppointment({});
     }
 
+    const onPaymentDialogClose = () => {
+        state.setIsPaymentDialogOpen(false)
+        state.setDialogPayment({});
+    }
     return (
         <React.Fragment>
             <PatientDialog
@@ -135,6 +166,14 @@ export const DialogContainer = () => {
                 onSubmit={(appointment: any) => state.dialogMode === 'add' ? onAddAppointment(appointment) : onEditAppointment(appointment)}
 
             />
+            <PaymentDialog
+                isOpen={state.isPaymentsDialogOpen}
+                mode="add"
+                payment={state.dialogPayment}
+                onClose={() => onPaymentDialogClose()}
+                onSubmit={(payment: any) => onAddPayment(payment)}
+            />
+
         </React.Fragment>
     );
 }

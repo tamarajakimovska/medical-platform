@@ -12,7 +12,7 @@ export const EditAccount = () => {
                     label="First Name"
                     type="First Name"
                     variant="standard"
-                    value='Liam'
+                    value='Tamara'
                 />
 
                 <TextField
@@ -22,7 +22,7 @@ export const EditAccount = () => {
                     label="Last Name"
                     type="Last Name"
                     variant="standard"
-                    value='Jonus'
+                    value='Jakimovska'
                 />
             </Box>
             <Box width={'30%'}>
@@ -34,7 +34,7 @@ export const EditAccount = () => {
                     label="Age"
                     type="Age"
                     variant="standard"
-                    value='25'
+                    value='21'
                 />
             </Box>
             <Box width={'30%'}>
@@ -46,7 +46,7 @@ export const EditAccount = () => {
                     label="Gender"
                     type="Gender"
                     variant="standard"
-                    value='Male'
+                    value='Female'
                 />
             </Box>
             <Box width={'30%'}>
@@ -57,7 +57,7 @@ export const EditAccount = () => {
                     label="Phone number"
                     type="Phone number"
                     variant="standard"
-                    value='0126596578'
+                    value='0178 1432889'
                 />
             </Box>
             <Box width={'30%'}>
@@ -69,7 +69,7 @@ export const EditAccount = () => {
                     label="Address"
                     type="Address"
                     variant="standard"
-                    value='71 Pilgrim Avenue Chevy Chase, MD 20815'
+                    value='Berlin, Germany'
                 />
             </Box>
         </Box>

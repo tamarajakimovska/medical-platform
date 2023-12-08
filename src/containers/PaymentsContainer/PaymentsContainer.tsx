@@ -1,7 +1,9 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
 import { Payment } from "../../components";
 import axios from "axios";
+import AddIcon from '@mui/icons-material/Add';
+import { Context } from "../../context";
 
 const Title = styled('h3')({
     color: 'rgba(31, 32, 34, .5)',
@@ -11,19 +13,27 @@ const Title = styled('h3')({
 })
 
 export const PaymentsContainer = () => {
-    const [payments, setPayments] = useState<any>([]);
+    const state = useContext(Context);
 
     useEffect(() => {
         const getPayments = async () => {
-            const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/payments');
+            try {
+                state.getPayments();
+                const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/payments');
 
-            response.status === 200 ? setPayments(response.data) : setPayments([]);
+                state.getPaymentsSuccess(response.data);
+            } catch (error) {
+                state.getPaymentsFail();
+            }
         }
 
         getPayments();
     }, []);
-    return <TableContainer component={Paper}>
-        <Title>Payments</Title>
+    return <TableContainer>
+        <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+            <Title>Payments</Title>
+            <Button variant="contained" style={{ maxHeight: '36px', minWidth: '200px' }} onClick={() => state.setIsPaymentDialogOpen(true)}> <AddIcon /> Add Payment</Button>
+        </Box>
         <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
             <TableHead>
                 <TableRow>
@@ -38,7 +48,7 @@ export const PaymentsContainer = () => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {payments.map((currentPayment: any) => {
+                {state.payments.map((currentPayment: any) => {
                     return <TableRow>
                         <Payment bill={currentPayment.bill} patient={currentPayment.patient} doctor={currentPayment.doctor} date={currentPayment.date} charges={currentPayment.charges} tax={currentPayment.tax} discount={currentPayment.discount} total={currentPayment.total} />
                     </TableRow>

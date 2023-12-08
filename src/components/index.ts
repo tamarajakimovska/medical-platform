@@ -17,3 +17,4 @@ export * from './UserContactInformation';
 export * from './UserEducation';
 export * from './AddAppointmentDialog';
 export * from './AppointmentDialog';
+export * from './PaymentDialog';
