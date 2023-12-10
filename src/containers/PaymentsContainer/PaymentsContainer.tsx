@@ -41,7 +41,9 @@ export const PaymentsContainer = () => {
         <TableContainer>
             <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
                 <Title>Payments</Title>
-                <Button variant="contained" style={{ maxHeight: '36px', minWidth: isMobile ? '0' : '200px' }} onClick={() => state.setIsPaymentDialogOpen(true)}> <AddIcon /> Add Payment</Button>
+                <Button variant="contained" style={{ maxHeight: '36px', minWidth: isMobile ? '0' : '200px' }} onClick={() => state.setIsPaymentDialogOpen(true)}>
+                    <AddIcon /> {isMobile ? null : 'Add Payment'}
+                </Button>
             </Box>
             <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
                 <TableHead>

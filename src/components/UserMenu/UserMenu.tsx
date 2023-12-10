@@ -34,7 +34,7 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}>
-            <img src={image} alt="profile" width={'38px'} height={'38vh'} style={{ borderRadius: '50%' }} />
+            <img src={image} alt="profile" width={'38px'} height={'38px'} style={{ borderRadius: '50%' }} />
         </Box>
 
         <Menu

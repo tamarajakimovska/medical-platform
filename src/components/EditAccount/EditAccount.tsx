@@ -4,16 +4,23 @@ import React from "react";
 export const EditAccount = () => {
     return <Box pt={5} >
         <Box>
-            <Box display={'flex'} width={'50%'} >
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="FirstName"
-                    label="First Name"
-                    type="First Name"
-                    variant="standard"
-                    value='Tamara'
-                />
+            <Box display={'flex'} sx={{
+                width: {
+                    xs: '100%',
+                    sm: '50%'
+                }
+            }}>
+                <Box mr={2}>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="FirstName"
+                        label="First Name"
+                        type="First Name"
+                        variant="standard"
+                        value='Tamara'
+                    />
+                </Box>
 
                 <TextField
                     autoFocus
@@ -25,7 +32,12 @@ export const EditAccount = () => {
                     value='Jakimovska'
                 />
             </Box>
-            <Box width={'30%'}>
+            <Box sx={{
+                width: {
+                    xs: '100%',
+                    sm: '30%'
+                }
+            }}>
                 <TextField
                     autoFocus
                     fullWidth
@@ -37,7 +49,12 @@ export const EditAccount = () => {
                     value='21'
                 />
             </Box>
-            <Box width={'30%'}>
+            <Box sx={{
+                width: {
+                    xs: '100%',
+                    sm: '30%'
+                }
+            }}>
                 <TextField
                     autoFocus
                     fullWidth
@@ -49,7 +66,12 @@ export const EditAccount = () => {
                     value='Female'
                 />
             </Box>
-            <Box width={'30%'}>
+            <Box sx={{
+                width: {
+                    xs: '100%',
+                    sm: '30%'
+                }
+            }}>
                 <TextField
                     autoFocus
                     margin="dense"
@@ -60,7 +82,12 @@ export const EditAccount = () => {
                     value='0178 1432889'
                 />
             </Box>
-            <Box width={'30%'}>
+            <Box sx={{
+                width: {
+                    xs: '100%',
+                    sm: '30%'
+                }
+            }}>
                 <TextField
                     autoFocus
                     fullWidth

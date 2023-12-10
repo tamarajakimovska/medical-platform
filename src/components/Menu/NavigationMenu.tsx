@@ -41,12 +41,20 @@ const NavItem = styled('div')((props) => ({
     cursor: props.className === 'active' ? 'default' : 'pointer'
 }));
 
-export const NavigationMenu = () => {
+interface Props {
+    onNavItemClick?: () => void;
+}
+
+export const NavigationMenu = ({ onNavItemClick }: Props) => {
     const location = useLocation();
     const navigate = useNavigate();
     const state = useContext(Context);
 
     const onAddPatient = () => {
+        if (onNavItemClick) {
+            onNavItemClick();
+        }
+
         state.setDialogMode('add');
         state.setDialogPatient({
             date: new Date()
@@ -54,30 +62,38 @@ export const NavigationMenu = () => {
         state.setIsAddPatientDialogOpen(true)
     }
 
+    const onNavigationItemClick = (page: string) => {
+        if (onNavItemClick) {
+            onNavItemClick();
+        }
+
+        navigate(page);
+    }
+
     return <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'}>
         <LogoStyle> <img src={logo} /></LogoStyle>
         <Title>MEDICINE</Title>
-        <Units onClick={() => navigate('/')}>
+        <Units onClick={() => onNavigationItemClick('/')}>
             <DashboardCustomizeRoundedIcon style={{ color: '#9D9D9D' }} />
             <Box ml={1}>
                 <NavItem className={location.pathname === '/' ? 'active' : ''}>Dashboard</NavItem>
             </Box>
         </Units>
-        <Units onClick={() => navigate('/appointments')}> <PersonSearchIcon style={{ color: '#9D9D9D' }} />
+        <Units onClick={() => onNavigationItemClick('/appointments')}> <PersonSearchIcon style={{ color: '#9D9D9D' }} />
             <Box ml={1}>
                 <NavItem className={location.pathname === '/appointments' ? 'active' : ''}>Appointments</NavItem>
             </Box>
         </Units>
-        <Units onClick={() => navigate('/doctors')}> <GroupsIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
+        <Units onClick={() => onNavigationItemClick('/doctors')}> <GroupsIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
             <NavItem className={location.pathname === '/doctors' ? 'active' : ''}>Doctors</NavItem>
         </Box></Units>
-        <Units onClick={() => navigate('/departments')}> <LocalHospitalIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
+        <Units onClick={() => onNavigationItemClick('/departments')}> <LocalHospitalIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
             <NavItem className={location.pathname === '/departments' ? 'active' : ''}>Departments</NavItem>
         </Box></Units>
-        <Units onClick={() => navigate('/patients')}> <VaccinesIcon style={{ color: '#9D9D9D' }} /> <Box ml={1}>
+        <Units onClick={() => onNavigationItemClick('/patients')}> <VaccinesIcon style={{ color: '#9D9D9D' }} /> <Box ml={1}>
             <NavItem className={location.pathname === '/patients' ? 'active' : ''}>Patients</NavItem>
         </Box></Units>
-        <Units onClick={() => navigate('/payments')}> <PaymentsIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
+        <Units onClick={() => onNavigationItemClick('/payments')}> <PaymentsIcon style={{ color: '#9D9D9D' }} />  <Box ml={1}>
             <NavItem className={location.pathname === '/payments' ? 'active' : ''}>Payments</NavItem>
         </Box></Units>
         <ButtonStyle>

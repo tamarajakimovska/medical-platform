@@ -11,7 +11,13 @@ const Title = styled('h3')({
 })
 
 export const EditAccountContainer = () => {
-    return <Box>
+    return <Box
+        sx={{
+            padding: {
+                xs: '0 1.5rem 1.5rem 1.5rem',
+                sm: '0'
+            }
+        }}>
         <Title>Edit account</Title>
         <Box display={'flex'} alignItems={'center'}>
             <img src={user} style={{ borderRadius: '50%' }} width={'86px'} height={"92vh"} />

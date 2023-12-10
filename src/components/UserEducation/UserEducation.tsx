@@ -19,7 +19,18 @@ const EducationInfoTitle = styled('div')({
 })
 
 export const UserEducation = () => {
-    return <Box style={{ backgroundColor: '#FBFBFB', boxShadow: '0 18px 34px rgba(0, 0, 0, .12)' }} width={'100%'} height={'42vh'} borderRadius={'2%'} px={2}>
+    return <Box style={{ backgroundColor: '#FBFBFB', boxShadow: '0 18px 34px rgba(0, 0, 0, .12)' }} borderRadius={'2%'} px={2}
+        sx={{
+            width: {
+                xs: 'auto',
+                sm: '100%'
+            },
+            height: {
+                xs: 'auto',
+                sm: '42vh'
+            }
+        }}
+    >
         <Box pt={2}>
             <EducationInfoTitle>Education</EducationInfoTitle>
         </Box>
