@@ -17,6 +17,7 @@ interface Props {
     onSubmit: (appointment: any, mode: 'add' | 'edit') => void;
 }
 
+// TO-DO: Check add bug
 export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit }: Props) => {
     const [localAppointment, setLocalAppointment] = useState<any>(appointment);
 

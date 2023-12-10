@@ -31,7 +31,13 @@ export const DoctorsInfoContainer = () => {
 
     console.log('dd', doctors)
 
-    return <React.Fragment>
+    return <Box
+        sx={{
+            padding: {
+                xs: '0 1.5rem 1.5rem 1.5rem',
+                sm: '0'
+            }
+        }}>
         <Title>Doctors</Title>
         <Box display="flex" flexWrap='wrap' justifyContent='space-between' alignItems='center'
             sx={{
@@ -47,5 +53,5 @@ export const DoctorsInfoContainer = () => {
                 </Box>
             })}
         </Box>
-    </React.Fragment>
+    </Box>
 }

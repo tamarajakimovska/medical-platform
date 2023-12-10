@@ -1,4 +1,4 @@
-import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
+import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled, useMediaQuery, useTheme } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Payment } from "../../components";
 import axios from "axios";
@@ -14,6 +14,8 @@ const Title = styled('h3')({
 
 export const PaymentsContainer = () => {
     const state = useContext(Context);
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
     useEffect(() => {
         const getPayments = async () => {
@@ -29,31 +31,39 @@ export const PaymentsContainer = () => {
 
         getPayments();
     }, []);
-    return <TableContainer>
-        <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
-            <Title>Payments</Title>
-            <Button variant="contained" style={{ maxHeight: '36px', minWidth: '200px' }} onClick={() => state.setIsPaymentDialogOpen(true)}> <AddIcon /> Add Payment</Button>
-        </Box>
-        <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
-            <TableHead>
-                <TableRow>
-                    <TableCell align="left"> <b>Bill </b></TableCell>
-                    <TableCell align="left"><b>Patient</b></TableCell>
-                    <TableCell align="left"><b>Doctor</b></TableCell>
-                    <TableCell align="left"><b>Date</b></TableCell>
-                    <TableCell align="left"><b> Charges</b></TableCell>
-                    <TableCell align="left"><b>Tax</b></TableCell>
-                    <TableCell align="left"><b>Discount</b></TableCell>
-                    <TableCell align="left"><b>Total</b></TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {state.payments.map((currentPayment: any) => {
-                    return <TableRow>
-                        <Payment bill={currentPayment.bill} patient={currentPayment.patient} doctor={currentPayment.doctor} date={currentPayment.date} charges={currentPayment.charges} tax={currentPayment.tax} discount={currentPayment.discount} total={currentPayment.total} />
+    return <Box
+        sx={{
+            padding: {
+                xs: '0 1.5rem 1.5rem 1.5rem',
+                sm: '0'
+            }
+        }}>
+        <TableContainer>
+            <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+                <Title>Payments</Title>
+                <Button variant="contained" style={{ maxHeight: '36px', minWidth: isMobile ? '0' : '200px' }} onClick={() => state.setIsPaymentDialogOpen(true)}> <AddIcon /> Add Payment</Button>
+            </Box>
+            <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="left"> <b>Bill </b></TableCell>
+                        <TableCell align="left"><b>Patient</b></TableCell>
+                        <TableCell align="left"><b>Doctor</b></TableCell>
+                        <TableCell align="left"><b>Date</b></TableCell>
+                        <TableCell align="left"><b> Charges</b></TableCell>
+                        <TableCell align="left"><b>Tax</b></TableCell>
+                        <TableCell align="left"><b>Discount</b></TableCell>
+                        <TableCell align="left"><b>Total</b></TableCell>
                     </TableRow>
-                })}
-            </TableBody>
-        </Table>
-    </TableContainer>
+                </TableHead>
+                <TableBody>
+                    {state.payments.map((currentPayment: any) => {
+                        return <TableRow>
+                            <Payment bill={currentPayment.bill} patient={currentPayment.patient} doctor={currentPayment.doctor} date={currentPayment.date} charges={currentPayment.charges} tax={currentPayment.tax} discount={currentPayment.discount} total={currentPayment.total} />
+                        </TableRow>
+                    })}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    </Box>
 }

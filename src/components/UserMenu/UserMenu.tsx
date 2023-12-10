@@ -38,7 +38,7 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
         </Box>
 
         <Menu
-            // anchorEl={anchorEl}
+            anchorEl={anchorEl}
             id="account-menu"
             open={open}
             onClose={() => handleClose()}

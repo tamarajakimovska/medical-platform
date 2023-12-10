@@ -57,8 +57,20 @@ export const DashboardContainer = () => {
 
     useGetPatients();
 
-    return <React.Fragment>
-        <Box display={'flex'} justifyContent={'space-between'}>
+    return <Box
+        sx={{
+            margin: {
+                xs: '1.5rem',
+                sm: '0'
+            }
+        }}>
+        <Box display={'flex'} justifyContent={'space-between'}
+            sx={{
+                flexDirection: {
+                    xs: 'column',
+                    sm: 'row'
+                }
+            }}>
             {DASHBOARD_CART.map((currentCart) => {
                 return <DashboardCart icon={currentCart.icon} name={currentCart.name} count={currentCart.count} />
             })}
@@ -77,7 +89,13 @@ export const DashboardContainer = () => {
             </Box>
             <AreaChart />
         </Box>
-        <Box display={'flex'} justifyContent={'space-between'}>
+        <Box display={'flex'} justifyContent={'space-between'}
+            sx={{
+                flexDirection: {
+                    xs: 'column',
+                    sm: 'row'
+                }
+            }}>
             <Box><h3> Age </h3>
                 <DonutChart series={[19, 17, 13, 11, 38]} labels={["0-10", "10-20", "20-30", "30-40", "40+"]} responsive={[]} donutChartType="donut" /> </Box>
             <Box> <h3>Gender</h3>
@@ -116,5 +134,5 @@ export const DashboardContainer = () => {
                 )
             }
         </Box>
-    </React.Fragment>
+    </Box>
 }

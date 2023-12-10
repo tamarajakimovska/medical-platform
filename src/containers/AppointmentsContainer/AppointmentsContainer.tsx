@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import { Appointment } from "../../components";
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
 import { Context } from "../../context";
 import { useGetAppointments, useGetPatients } from "../../hooks";
@@ -18,6 +18,8 @@ const Title = styled('h2')({
 
 export const AppointmentsContainer = () => {
     const state = useContext(Context);
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
     useGetAppointments();
 
@@ -44,10 +46,18 @@ export const AppointmentsContainer = () => {
         }
     };
 
-    return <React.Fragment>
-        <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} >
+    return <Box
+        sx={{
+            padding: {
+                xs: '0 1.5rem 1.5rem 1.5rem',
+                sm: '0'
+            }
+        }}>
+        <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
             <Title>Appointments</Title>
-            <Button variant="contained" onClick={() => state.setIsAddAppointmentDialogOpen(true)} style={{ maxHeight: '36px', minWidth: '200px' }}> <AddIcon /> Add Appointment</Button>
+            <Button variant="contained" onClick={() => state.setIsAddAppointmentDialogOpen(true)} style={{ maxHeight: '36px', minWidth: isMobile ? '0' : '200px' }}>
+                <AddIcon /> {isMobile ? null : 'Add Appointment'}
+            </Button>
         </Box>
         {
             state.isLoadingAppointments ? <div>Loading appointments ...</div> : (
@@ -75,5 +85,5 @@ export const AppointmentsContainer = () => {
                 </TableContainer>
             )
         }
-    </React.Fragment>
+    </Box>
 };

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import { Patient } from "../../components";
 import axios from "axios";
 import { useGetPatients } from "../../hooks";
@@ -47,32 +47,41 @@ export const PatientsContainer = () => {
         return <div>Loading patients ...</div>
     }
 
-    return <TableContainer component={Paper}>
-        <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
-            <TableHead style={{ backgroundColor: '#336cfb' }}>
-                <TableRow>
-                    <TableCell align="left"> <b>Photo </b></TableCell>
-                    <TableCell align="left"><b>Name</b></TableCell>
-                    <TableCell align="left"><b>ID</b></TableCell>
-                    <TableCell align="left"><b>Age</b></TableCell>
-                    <TableCell align="left"><b>Adress</b></TableCell>
-                    <TableCell align="left"><b>Number</b></TableCell>
-                    <TableCell align="left"><b>Last Visit</b></TableCell>
-                    <TableCell align="left"><b>Status</b></TableCell>
-                    <TableCell align="left"><b>Actions</b></TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {state.patients.map((currentPatient: any) => {
-                    return <TableRow>
-                        <Patient
-                            patient={currentPatient}
-                            onEditClick={() => onEditPatient(currentPatient)}
-                            onDeleteClick={() => onDelete(currentPatient)}
-                        />
+    return <Box
+        sx={{
+            padding: {
+                xs: '0 1.5rem 1.5rem 1.5rem',
+                sm: '0'
+            }
+        }}>
+        <TableContainer component={Paper}>
+            <Title>Patients</Title>
+            <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)', marginTop: '4%' }}>
+                <TableHead style={{ backgroundColor: '#336cfb' }}>
+                    <TableRow>
+                        <TableCell align="left"> <b>Photo </b></TableCell>
+                        <TableCell align="left"><b>Name</b></TableCell>
+                        <TableCell align="left"><b>ID</b></TableCell>
+                        <TableCell align="left"><b>Age</b></TableCell>
+                        <TableCell align="left"><b>Adress</b></TableCell>
+                        <TableCell align="left"><b>Number</b></TableCell>
+                        <TableCell align="left"><b>Last Visit</b></TableCell>
+                        <TableCell align="left"><b>Status</b></TableCell>
+                        <TableCell align="left"><b>Actions</b></TableCell>
                     </TableRow>
-                })}
-            </TableBody>
-        </Table>
-    </TableContainer>
+                </TableHead>
+                <TableBody>
+                    {state.patients.map((currentPatient: any) => {
+                        return <TableRow>
+                            <Patient
+                                patient={currentPatient}
+                                onEditClick={() => onEditPatient(currentPatient)}
+                                onDeleteClick={() => onDelete(currentPatient)}
+                            />
+                        </TableRow>
+                    })}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    </Box>
 }

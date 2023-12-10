@@ -7,15 +7,19 @@ interface Props {
     count: number;
 }
 
-const Cart = styled('div')({
+const Cart = styled('div')(({ theme }) => ({
     boxShadow: '0 18px 34px rgba(0, 0, 0, .12)',
     borderRadius: '6px',
     padding: '1.5rem',
     display: 'flex',
     alignItems: 'center',
     flexBasis: '20%',
-    width: '100%'
-})
+    width: '100%',
+    [theme.breakpoints.down("sm")]: {
+        width: 'auto',
+        marginBottom: '1.5rem'
+    },
+}))
 
 const IconStyle = styled('div')({
     color: 'rgba(51, 108, 251, 0.5)',

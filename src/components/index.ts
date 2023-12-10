@@ -18,3 +18,4 @@ export * from './UserEducation';
 export * from './AddAppointmentDialog';
 export * from './AppointmentDialog';
 export * from './PaymentDialog';
+export * from './Menu';
