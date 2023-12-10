@@ -31,7 +31,16 @@ export const DoctorProfileContainer = () => {
     }, [])
 
 
-    return <Box display={'flex'} justifyContent={'space-between'}>
+    return <Box display={'flex'} justifyContent={'space-between'} sx={{
+        flexDirection: {
+            xs: 'column',
+            sm: 'row'
+        },
+        padding: {
+            xs: '0 1.5rem 1.5rem 1.5rem',
+            sm: '0'
+        }
+    }}>
         <Box sx={{
             width: {
                 xs: '100%',

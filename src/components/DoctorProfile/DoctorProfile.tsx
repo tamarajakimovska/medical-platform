@@ -18,7 +18,12 @@ export const DoctorProfile = ({ doctor }: Props) => {
                 variant="standard"
                 value={doctor?.name}
             />
-            <Box display={'flex'} justifyContent={'space-between'} width={'80%'} mt={2}>
+            <Box display={'flex'} justifyContent={'space-between'} width={'80%'} mt={2} sx={{
+                flexDirection: {
+                    xs: 'column',
+                    sm: 'row'
+                }
+            }}>
                 <TextField
                     id="Speciality"
                     label="Speciality"
