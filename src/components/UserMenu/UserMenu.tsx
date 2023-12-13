@@ -79,16 +79,3 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
         </Menu>
     </Fragment>
 }
-
-// function printHello() {}
-// Hello 
-
-// function printHello(name) {}
-// Hello `${name}` 
-// -> Hello Tamara
-// -> Goodbye
-
-// function printHello(name) {}
-// Hello `${name}` 
-// -> Hello Nikola
-// -> Goodbye

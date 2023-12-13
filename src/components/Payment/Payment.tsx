@@ -23,8 +23,6 @@ export const Payment = ({ bill, patient, doctor, date, charges, tax, discount, t
             <TableCell align="left">{tax}%</TableCell>
             <TableCell align="left">{discount}$</TableCell>
             <TableCell align="left">{total}$</TableCell>
-
-
         </React.Fragment>
     )
 }

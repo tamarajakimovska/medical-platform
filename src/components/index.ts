@@ -15,7 +15,6 @@ export * from './Loaders';
 export * from './UserProfile';
 export * from './UserContactInformation';
 export * from './UserEducation';
-export * from './AddAppointmentDialog';
 export * from './AppointmentDialog';
 export * from './PaymentDialog';
 export * from './Menu';

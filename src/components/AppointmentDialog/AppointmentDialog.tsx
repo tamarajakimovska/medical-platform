@@ -17,7 +17,6 @@ interface Props {
     onSubmit: (appointment: any, mode: 'add' | 'edit') => void;
 }
 
-// TO-DO: Check add bug
 export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit }: Props) => {
     const [localAppointment, setLocalAppointment] = useState<any>(appointment);
 
@@ -28,7 +27,6 @@ export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit
     return <React.Fragment>
         <Dialog open={isOpen} onClose={() => onClose()}>
             <DialogTitle>{mode === 'add' ? 'Add' : 'Edit'} appointment</DialogTitle>
-            <Box></Box>
             <DialogContent>
                 <TextField
                     autoFocus
@@ -40,7 +38,6 @@ export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit
                     variant="standard"
                     value={localAppointment.name || ''}
                     onChange={(event) => {
-                        console.log('123')
                         setLocalAppointment({ ...localAppointment, name: event.target.value })
                     }}
                 />
@@ -153,7 +150,7 @@ export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit
             </DialogContent>
             <DialogActions>
                 <Button onClick={() => onClose()}>Cancel</Button>
-                <Button variant="contained" onClick={() => onSubmit(localAppointment, mode)}>{mode === 'add' ? 'Add' : 'Update'} appointment</Button>
+                <Button type='submit' variant="contained" onClick={() => onSubmit(localAppointment, mode)}>{mode === 'add' ? 'Add' : 'Update'} appointment</Button>
             </DialogActions>
         </Dialog>
     </React.Fragment>

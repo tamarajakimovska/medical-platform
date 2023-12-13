@@ -32,7 +32,6 @@ export const Patient = ({ patient, onEditClick, onDeleteClick }: Props) => {
                 <DeleteIcon />
             </Fab>
         </TableCell>
-
     </React.Fragment >
     )
 }

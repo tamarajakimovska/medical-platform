@@ -27,7 +27,7 @@ export const DoctorInfo = ({ image, name, specialty, adress }: Props) => {
                 <h2>{name}</h2>
                 <span>{specialty}</span>
                 <div>{adress}</div>
-                <Box pt={2}> <Button variant="contained">View Profile</Button> </Box>
+                <Box pt={2}> <Button variant="contained">View Profile</Button></Box>
             </Box>
         </InfoBox>
     </Box>

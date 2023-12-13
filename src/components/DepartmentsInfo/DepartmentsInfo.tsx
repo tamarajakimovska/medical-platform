@@ -23,7 +23,8 @@ export const DepartmentsInfo = ({ image, department, purpose }: Props) => {
     return <Box display='flex' flexDirection='column'>
         <InfoBoxDepartments>
             <Box maxWidth='100%' height='auto'> <img src={image} alt="departments" width='100%' style={{ borderRadius: '4px' }} /> </Box>
-            <Box>  <h2>{department}</h2>
+            <Box>
+                <h2>{department}</h2>
                 <p>{purpose}</p>
             </Box>
         </InfoBoxDepartments>

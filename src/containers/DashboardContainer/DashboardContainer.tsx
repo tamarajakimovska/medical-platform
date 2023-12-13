@@ -52,7 +52,6 @@ const Income = styled('div')({
 })
 
 export const DashboardContainer = () => {
-    // const [patients, setPatients] = useState<any>([]);
     const state = useContext(Context);
 
     useGetPatients();
