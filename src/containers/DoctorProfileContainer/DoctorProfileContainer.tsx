@@ -37,7 +37,7 @@ export const DoctorProfileContainer = () => {
             sm: 'row'
         },
         padding: {
-            xs: '0 1.5rem 1.5rem 1.5rem',
+            xs: '1.5rem 1.5rem 1.5rem 1.5rem',
             sm: '0'
         }
     }}>

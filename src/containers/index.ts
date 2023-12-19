@@ -8,3 +8,4 @@ export * from './DashboardContainer';
 export * from './DoctorProfileContainer';
 export * from './EditAccountContainer';
 export * from './UserProfileContainer';
+export * from './LoginContainer';

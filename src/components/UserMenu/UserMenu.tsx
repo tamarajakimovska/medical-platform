@@ -4,6 +4,7 @@ import image from '../../images/userImage.jpeg';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { useNavigate } from 'react-router';
+import { Logout } from '..';
 
 interface Props {
     isOpen?: boolean;
@@ -72,6 +73,11 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
             <MenuItem onClick={() => handleRedirect('/user')}>
                 <AccountCircleIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />
                 User Profile
+            </MenuItem>
+            <MenuItem onClick={() => handleClose()}>
+                {/* // TO-DO: Change icon */}
+                <AccountCircleIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />
+                <Logout />
             </MenuItem>
         </Menu>
     </Fragment>

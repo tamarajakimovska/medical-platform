@@ -18,3 +18,5 @@ export * from './UserEducation';
 export * from './AppointmentDialog';
 export * from './PaymentDialog';
 export * from './Menu';
+export * from './LoginButton';
+export * from './Logout';

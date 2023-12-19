@@ -61,6 +61,9 @@ export const DashboardContainer = () => {
             margin: {
                 xs: '1.5rem',
                 sm: '0'
+            },
+            paddingTop: {
+                xs: '1.5rem'
             }
         }}>
         <Box display={'flex'} justifyContent={'space-between'}
