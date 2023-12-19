@@ -47,6 +47,7 @@ interface Props {
 
 export const NavigationMenu = ({ onNavItemClick }: Props) => {
     const location = useLocation();
+    console.log('location', location)
     const navigate = useNavigate();
     const state = useContext(Context);
 

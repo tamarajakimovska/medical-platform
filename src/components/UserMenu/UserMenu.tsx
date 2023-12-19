@@ -1,9 +1,8 @@
-import { Box, Divider, Menu, MenuItem } from '@mui/material';
-import React, { Fragment, useEffect, useState } from 'react';
+import { Box, Menu, MenuItem } from '@mui/material';
+import React, { Fragment, useState } from 'react';
 import image from '../../images/userImage.jpeg';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router';
 
 interface Props {
@@ -71,10 +70,8 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
                 Edit Account
             </MenuItem>
             <MenuItem onClick={() => handleRedirect('/user')}>
-                <AccountCircleIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />  User Profile
-            </MenuItem>
-            <MenuItem onClick={() => handleRedirect('/logout')}>
-                <LogoutIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />  Log Out
+                <AccountCircleIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />
+                User Profile
             </MenuItem>
         </Menu>
     </Fragment>

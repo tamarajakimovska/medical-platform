@@ -14,7 +14,6 @@ const InfoBox = styled('div')({
     boxShadow: '0 18px 24px rgba(0, 0, 0, .12)',
     display: 'block',
     margin: '0 auto 6rem',
-
     textAlign: 'center',
     paddingBottom: '20px'
 })
