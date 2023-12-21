@@ -2,14 +2,14 @@ import { TableCell } from "@mui/material";
 import React from "react";
 
 interface Props {
-    bill: number;
+    bill: string;
     patient: string;
     doctor: string;
     date: string;
-    charges: number;
-    tax: number
-    discount: number;
-    total: number;
+    charges: string;
+    tax: string
+    discount: string;
+    total: string;
 }
 
 export const Payment = ({ bill, patient, doctor, date, charges, tax, discount, total }: Props) => {

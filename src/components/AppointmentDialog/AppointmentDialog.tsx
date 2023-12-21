@@ -8,20 +8,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from "@mui/material";
 import { useState } from "react";
 import dayjs from 'dayjs';
+import { Appointment } from "../../interfaces";
 
 interface Props {
     isOpen: boolean;
     mode: 'add' | 'edit';
-    appointment?: any;
+    appointment?: Appointment;
     onClose: () => void;
-    onSubmit: (appointment: any, mode: 'add' | 'edit') => void;
+    onSubmit: (appointment: Appointment, mode: 'add' | 'edit') => void;
 }
 
 export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit }: Props) => {
-    const [localAppointment, setLocalAppointment] = useState<any>(appointment);
+    const [localAppointment, setLocalAppointment] = useState<Appointment>(appointment!);
 
     useEffect(() => {
-        setLocalAppointment(appointment)
+        setLocalAppointment(appointment!)
     }, [appointment])
 
     return <React.Fragment>
@@ -62,7 +63,7 @@ export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit
                         fullWidth
                         variant="standard"
                         value={localAppointment.age || null}
-                        onChange={(event) => setLocalAppointment({ ...localAppointment, age: event.target.value })}
+                        onChange={(event) => setLocalAppointment({ ...localAppointment, age: Number(event.target.value) })}
                     />
                     <TextField
                         autoFocus
@@ -84,8 +85,8 @@ export const AppointmentDialog = ({ isOpen, mode, appointment, onClose, onSubmit
                     type="address"
                     fullWidth
                     variant="standard"
-                    value={localAppointment.address || ''}
-                    onChange={(event) => setLocalAppointment({ ...localAppointment, address: event.target.value })}
+                    value={localAppointment.adress || ''}
+                    onChange={(event) => setLocalAppointment({ ...localAppointment, adress: event.target.value })}
                 />
                 <TextField
                     autoFocus

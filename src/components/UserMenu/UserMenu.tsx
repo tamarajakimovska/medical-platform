@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react';
 import image from '../../images/userImage.jpeg';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router';
 import { Logout } from '..';
 
@@ -75,8 +76,7 @@ export const UserMenu = ({ isOpen, onClose }: Props) => {
                 User Profile
             </MenuItem>
             <MenuItem onClick={() => handleClose()}>
-                {/* // TO-DO: Change icon */}
-                <AccountCircleIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />
+                <LogoutIcon style={{ fontSize: '28px', marginRight: '12px', backgroundColor: '#E8E8E8', padding: '12px', borderRadius: '50%' }} />
                 <Logout />
             </MenuItem>
         </Menu>

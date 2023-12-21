@@ -1,20 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Box } from "@mui/system";
 import { Appointment } from "../../components";
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
 import { Context } from "../../context";
-import { useGetAppointments, useGetPatients } from "../../hooks";
+import { useGetAppointments } from "../../hooks";
 import AddIcon from '@mui/icons-material/Add';
+import { Appointment as IAppointment } from "../../interfaces";
+import { TableLoaders } from "../../components/Loaders/TableLoaders";
 
-
-const Title = styled('h2')({
+const Title = styled('h3')(({ theme }) => ({
     color: 'rgba(31, 32, 34, .5)',
     fontSize: '2rem',
     width: '100%',
-})
-
-
+    margin: '0 0 2rem 0',
+    [theme.breakpoints.down("sm")]: {
+        margin: '2rem 0'
+    },
+}))
 
 export const AppointmentsContainer = () => {
     const state = useContext(Context);
@@ -23,13 +26,13 @@ export const AppointmentsContainer = () => {
 
     useGetAppointments();
 
-    const onEdit = async (appointment: any) => {
+    const onEdit = async (appointment: IAppointment) => {
         state.setDialogMode('edit');
         state.setDialogAppointment(appointment);
         state.setIsAddAppointmentDialogOpen(true);
     };
 
-    const onDelete = async (appointment: any) => {
+    const onDelete = async (appointment: IAppointment) => {
         try {
             const response = await axios.delete(`https://6554a22a63cafc694fe6bb57.mockapi.io/appointments/${appointment.id}`)
         } catch {
@@ -60,7 +63,7 @@ export const AppointmentsContainer = () => {
             </Button>
         </Box>
         {
-            state.isLoadingAppointments ? <div>Loading appointments ...</div> : (
+            state.isLoadingAppointments ? <TableLoaders /> : (
                 <TableContainer component={Paper}>
                     <Table size="small" style={{ backgroundColor: 'hsla(0,0%,92%,.3)' }}>
                         <TableHead>
@@ -71,7 +74,7 @@ export const AppointmentsContainer = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {state.appointments.map((appointment: any) => {
+                            {state.appointments.map((appointment: IAppointment) => {
                                 return <TableRow>
                                     <Appointment
                                         patient={appointment}

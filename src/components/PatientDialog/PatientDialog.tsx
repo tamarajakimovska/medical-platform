@@ -8,20 +8,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from "@mui/material";
 import { useState } from "react";
 import dayjs from 'dayjs';
+import { Patient } from "../../interfaces";
 
 interface Props {
     isOpen: boolean;
     mode: 'add' | 'edit';
-    patient?: any;
+    patient?: Patient;
     onClose: () => void;
-    onSubmit: (patient: any, mode: 'add' | 'edit') => void;
+    onSubmit: (patient: Patient, mode: 'add' | 'edit') => void;
 }
 
 export const PatientDialog = ({ isOpen, mode, patient, onClose, onSubmit }: Props) => {
-    const [localPatient, setLocalPatient] = useState<any>(patient);
+    const [localPatient, setLocalPatient] = useState<Patient>(patient!);
 
     useEffect(() => {
-        setLocalPatient(patient)
+        setLocalPatient(patient!)
     }, [patient])
 
     return <React.Fragment>
@@ -64,7 +65,7 @@ export const PatientDialog = ({ isOpen, mode, patient, onClose, onSubmit }: Prop
                         fullWidth
                         variant="standard"
                         value={localPatient.age || null}
-                        onChange={(event) => setLocalPatient({ ...localPatient, age: event.target.value })}
+                        onChange={(event) => setLocalPatient({ ...localPatient, age: Number(event.target.value) })}
                     />
                     <TextField
                         autoFocus
@@ -86,8 +87,8 @@ export const PatientDialog = ({ isOpen, mode, patient, onClose, onSubmit }: Prop
                     type="address"
                     fullWidth
                     variant="standard"
-                    value={localPatient.address || ''}
-                    onChange={(event) => setLocalPatient({ ...localPatient, address: event.target.value })}
+                    value={localPatient.adress || ''}
+                    onChange={(event) => setLocalPatient({ ...localPatient, adress: event.target.value })}
                 />
                 <TextField
                     autoFocus

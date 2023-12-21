@@ -9,9 +9,11 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import { getTimelineIcon, getTimelineIconColor } from '../../utils';
+import { DoctorTimeline as IDoctorTimeline } from '../../interfaces';
+
 
 interface Props {
-    timeline: any[];
+    timeline: IDoctorTimeline[];
 }
 
 export const DoctorTimeline = ({ timeline }: Props) => {

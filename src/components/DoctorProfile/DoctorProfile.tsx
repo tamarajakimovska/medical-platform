@@ -1,9 +1,10 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
+import { Doctor } from "../../interfaces";
 
 
 interface Props {
-    doctor: any
+    doctor: Doctor
 }
 
 export const DoctorProfile = ({ doctor }: Props) => {

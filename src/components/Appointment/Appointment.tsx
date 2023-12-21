@@ -5,12 +5,13 @@ import { AppointmentsContainer } from "../../containers";
 import { Button, Fab, TableCell } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Patient } from "../../interfaces";
 
 interface Props {
-    patient: any;
+    patient: Patient;
     areActionsVisible?: boolean
-    onEditClick?: (patient: any) => void;
-    onDeleteClick?: (patient: any) => void;
+    onEditClick?: (patient: Patient) => void;
+    onDeleteClick?: (patient: Patient) => void;
 }
 
 const StyleButton = styled('div')({

@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { DoctorInfo, DoctorLoaders } from "../../components";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { Doctor } from "../../interfaces";
 
 const Title = styled('h3')({
     color: 'rgba(31, 32, 34, .5)',
     fontSize: '2rem',
     width: '100 %',
-
 })
 
 export const DoctorsInfoContainer = () => {
@@ -37,7 +37,7 @@ export const DoctorsInfoContainer = () => {
         getDoctors();
     }, []);
 
-    const onDoctorClick = (id: any) => {
+    const onDoctorClick = (id: string) => {
         navigate(`/profile/${id}`);
     }
 
@@ -58,7 +58,7 @@ export const DoctorsInfoContainer = () => {
                     sm: 'row'
                 }
             }}>
-            {isFetching ? <div>Loading doctors ...</div> : doctors.map((currentDoctor: any) => {
+            {isFetching ? <DoctorLoaders /> : doctors.map((currentDoctor: Doctor) => {
                 return <Box key={currentDoctor.name} flexBasis={'32%'} borderRadius={'4px'} onClick={() => onDoctorClick(currentDoctor.id)} >
                     <DoctorInfo image={currentDoctor.image} name={currentDoctor.name} specialty={currentDoctor.specialty} adress={currentDoctor.adress} />
                 </Box>

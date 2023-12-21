@@ -3,11 +3,12 @@ import React from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { Patient as IPatient } from "../../interfaces";
 
 interface Props {
-    patient: any
-    onEditClick?: (patient: any) => void;
-    onDeleteClick?: (patient: any) => void;
+    patient: IPatient
+    onEditClick?: (patient: IPatient) => void;
+    onDeleteClick?: (patient: IPatient) => void;
 }
 
 export const Patient = ({ patient, onEditClick, onDeleteClick }: Props) => {

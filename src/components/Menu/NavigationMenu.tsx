@@ -10,7 +10,7 @@ import PaymentsIcon from '@mui/icons-material/Payments';
 import AddIcon from '@mui/icons-material/Add';
 import { useLocation, useNavigate } from 'react-router';
 import { Context } from '../../context';
-
+import { Patient } from '../../interfaces';
 
 const Units = styled('div')({
     margin: '10%',
@@ -58,8 +58,8 @@ export const NavigationMenu = ({ onNavItemClick }: Props) => {
 
         state.setDialogMode('add');
         state.setDialogPatient({
-            date: new Date()
-        })
+            date: `${new Date()}`
+        } as Patient)
         state.setIsAddPatientDialogOpen(true)
     }
 

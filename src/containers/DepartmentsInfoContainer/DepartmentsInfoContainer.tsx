@@ -1,17 +1,17 @@
 import { Box } from "@mui/system";
 import { DepartmentsInfo } from "../../components";
 import React, { useEffect, useState } from "react";
-import Department1 from '../../images/department-1.jpeg';
-import Department2 from '../../images/department-2.jpeg';
-import Department3 from '../../images/department-3.jpeg';
-import Department4 from '../../images/department-4.jpeg';
-import Department5 from '../../images/department-5.jpeg';
-import Department6 from '../../images/department-6.jpeg';
-import Department7 from '../../images/department-7.jpeg';
-import Department8 from '../../images/department-8.jpeg';
-import Department9 from '../../images/department-9.jpeg';
 import { styled } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router";
+import { DoctorsInfoContainer } from "..";
+import { DepartmentLoaders } from "../../components/Loaders/DepartmentLoaders";
+
+interface Department {
+    image: string;
+    department: string;
+    purpose: string;
+}
 
 const Title = styled('h3')({
     color: 'rgba(31, 32, 34, .5)',
@@ -19,15 +19,26 @@ const Title = styled('h3')({
     width: '100 %',
 })
 
-
 export const DeparmentsInfoContainer = () => {
     const [departments, setDepartments] = useState<any>([]);
+    const navigate = useNavigate();
+    const [isFetching, setIsFetching] = useState<boolean>(false)
 
     useEffect(() => {
         const getDepartments = async () => {
-            const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/departments');
+            setIsFetching(true);
 
-            response.status === 200 ? setDepartments(response.data) : setDepartments([]);
+            try {
+                const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/departments');
+
+                response.status === 200 ? setDepartments(response.data) : setDepartments([]);
+            }
+            catch {
+                setIsFetching(false)
+            }
+            finally {
+                setIsFetching(false)
+            }
         }
 
         getDepartments();
@@ -46,15 +57,13 @@ export const DeparmentsInfoContainer = () => {
             justifyContent='space-between'
             alignItems='center'
             margin='0 auto'
-            pt={5}
             sx={{
                 flexDirection: {
                     xs: 'column',
                     sm: 'row'
                 }
             }}>
-
-            {departments.map((currentDepartment: any) => {
+            {isFetching ? <DepartmentLoaders /> : departments.map((currentDepartment: Department) => {
                 return <Box key={currentDepartment.image} flexBasis={'32%'}>
                     <DepartmentsInfo image={currentDepartment.image} department={currentDepartment.department} purpose={currentDepartment.purpose} />
                 </Box>

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Appointment, BasicAreaChart, DashboardCart, DonutChart } from "../../components";
+import React, { useContext } from "react";
+import { Appointment, BasicAreaChart, DashboardCart, DashboardLoaders, DonutChart } from "../../components";
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import SickIcon from '@mui/icons-material/Sick';
@@ -8,6 +8,7 @@ import PaidIcon from '@mui/icons-material/Paid';
 import { Context } from "../../context";
 import { AreaChart } from "../../components";
 import { useGetPatients } from "../../hooks/use-get-patients.hook";
+import { Patient } from "../../interfaces";
 
 
 const DASHBOARD_CART = [
@@ -55,6 +56,10 @@ export const DashboardContainer = () => {
     const state = useContext(Context);
 
     useGetPatients();
+
+    if (state.isLoadingPatients) {
+        return <DashboardLoaders />
+    }
 
     return <Box
         sx={{
@@ -121,7 +126,7 @@ export const DashboardContainer = () => {
                             </TableHead>
                             {
                                 <TableBody>
-                                    {state.patients.map((currentPatient: any) => {
+                                    {state.patients.map((currentPatient: Patient) => {
                                         return <TableRow>
                                             <Appointment
                                                 patient={currentPatient}

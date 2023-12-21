@@ -1,12 +1,13 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { Payment } from "../../interfaces";
 
 interface Props {
     isOpen: boolean;
     mode: 'add',
-    payment?: any;
+    payment?: Payment;
     onClose: () => void;
-    onSubmit: (payments: any, mode: 'add') => void;
+    onSubmit: (payment: Payment, mode: 'add') => void;
 }
 
 

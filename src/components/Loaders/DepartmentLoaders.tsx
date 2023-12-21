@@ -1,7 +1,8 @@
-import { Box, Skeleton } from '@mui/material';
-import React from 'react';
+import { Skeleton } from "@mui/lab";
+import { Box } from "@mui/system";
+import React from "react";
 
-export const DoctorLoaders = () => {
+export const DepartmentLoaders = () => {
     return <Box width="100%" display='flex' justifyContent='space-between' flexWrap="wrap" rowGap="32px">
         {[...Array(9)].map((elem) => {
             return <Box key={elem}>

@@ -41,7 +41,6 @@ export const Reducer = (state: GlobalState, action: Action) => {
             return {
                 ...state,
                 isLoadingPatients: false,
-                // TO-DO: We can add error
             }
         case Actions.SET_IS_ADD_PATIENT_DIALOG_OPEN:
             return {

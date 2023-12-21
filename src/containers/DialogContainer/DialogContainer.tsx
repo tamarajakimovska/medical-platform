@@ -3,18 +3,18 @@ import { Context } from '../../context';
 import axios from 'axios';
 import { AppointmentDialog, PatientDialog, PaymentDialog } from '../../components';
 import { useId } from 'react';
-import { setTextRange } from 'typescript';
+import { Appointment, Patient, Payment } from '../../interfaces';
 
 export const DialogContainer = () => {
     const state = React.useContext(Context);
     const id = useId();
 
-    const onAddPatient = async (patient: any) => {
+    const onAddPatient = async (patient: Patient) => {
         const response = await axios.post('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients', {
             image: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg',
             name: patient.name,
             age: patient.age,
-            adress: patient.address,
+            adress: patient.adress,
             number: patient.number,
             id: patient.id
         })
@@ -34,7 +34,7 @@ export const DialogContainer = () => {
         }
     }
 
-    const onAddAppointment = async (appointment: any) => {
+    const onAddAppointment = async (appointment: Appointment) => {
 
         console.log("ON ADD", appointment)
         const response = await axios.post('https://6554a22a63cafc694fe6bb57.mockapi.io/appointments', {
@@ -65,7 +65,7 @@ export const DialogContainer = () => {
         }
     }
 
-    const onAddPayment = async (payment: any) => {
+    const onAddPayment = async (payment: Payment) => {
 
         const response = await axios.post('https://6555e1d584b36e3a431e8f4f.mockapi.io/payments', {
             bill: payment.bill,
@@ -92,7 +92,7 @@ export const DialogContainer = () => {
     }
 
 
-    const onEditPatient = async (patient: any) => {
+    const onEditPatient = async (patient: Patient) => {
         console.log('patient', patient);
         try {
             const response = await axios.put(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`, {
@@ -115,7 +115,7 @@ export const DialogContainer = () => {
         }
     }
 
-    const onEditAppointment = async (appointment: any) => {
+    const onEditAppointment = async (appointment: Appointment) => {
         try {
             const response = await axios.put(`https://6554a22a63cafc694fe6bb57.mockapi.io/appointments/${appointment.id}`, {
                 ...appointment
@@ -137,17 +137,17 @@ export const DialogContainer = () => {
 
     const onDialogClose = () => {
         state.setIsAddPatientDialogOpen(false)
-        state.setDialogPatient({});
+        state.setDialogPatient({} as Patient);
     }
 
     const onAppointmentDialogClose = () => {
         state.setIsAddAppointmentDialogOpen(false)
-        state.setDialogAppointment({});
+        state.setDialogAppointment({} as Appointment);
     }
 
     const onPaymentDialogClose = () => {
         state.setIsPaymentDialogOpen(false)
-        state.setDialogPayment({});
+        state.setDialogPayment({} as Payment);
     }
     return (
         <React.Fragment>
@@ -156,14 +156,14 @@ export const DialogContainer = () => {
                 mode={state.dialogMode}
                 patient={state.dialogPatient}
                 onClose={() => onDialogClose()}
-                onSubmit={(patient: any) => state.dialogMode === 'add' ? onAddPatient(patient) : onEditPatient(patient)}
+                onSubmit={(patient: Patient) => state.dialogMode === 'add' ? onAddPatient(patient) : onEditPatient(patient)}
             />
             <AppointmentDialog
                 isOpen={state.isAppointmentDialogOpen}
                 mode={state.dialogMode}
                 appointment={state.dialogAppointment}
                 onClose={() => onAppointmentDialogClose()}
-                onSubmit={(appointment: any) => state.dialogMode === 'add' ? onAddAppointment(appointment) : onEditAppointment(appointment)}
+                onSubmit={(appointment: Appointment) => state.dialogMode === 'add' ? onAddAppointment(appointment) : onEditAppointment(appointment)}
 
             />
             <PaymentDialog
@@ -171,7 +171,7 @@ export const DialogContainer = () => {
                 mode="add"
                 payment={state.dialogPayment}
                 onClose={() => onPaymentDialogClose()}
-                onSubmit={(payment: any) => onAddPayment(payment)}
+                onSubmit={(payment: Payment) => onAddPayment(payment)}
             />
 
         </React.Fragment>

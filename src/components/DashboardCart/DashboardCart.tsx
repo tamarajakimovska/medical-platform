@@ -2,7 +2,7 @@ import { Box, styled } from "@mui/material";
 import React from "react";
 
 interface Props {
-    icon: any;
+    icon: React.ReactElement;
     name: string;
     count: number;
 }
@@ -24,14 +24,11 @@ const Cart = styled('div')(({ theme }) => ({
 const IconStyle = styled('div')({
     color: 'rgba(51, 108, 251, 0.5)',
     marginRight: '15px',
-
-
 })
 
 const NameStyle = styled('div')({
     fontFamily: 'Lato, sans - serif',
     fontWeight: '600'
-
 })
 
 const CountStyle = styled('div')({

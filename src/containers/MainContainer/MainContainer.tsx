@@ -18,9 +18,11 @@ export const MainContainer = ({ children }: Props) => {
     console.log('isAuthenticated', isAuthenticated);
 
     if (!isAuthenticated) {
-        return <Box width="100%" height="100vh" display='flex' justifyContent='space-between' alignItems='center' bgcolor="pink">
+        return <Box width="100%" height="100vh" display='flex' justifyContent='space-between' alignItems='center' style={{
+            background: "linear-gradient(90deg, rgba(31,115,189,1) 3%, rgba(164,216,229,1) 38%, rgba(112,182,226,1) 100%)"
+        }}>
             <LoginContainer />
-        </Box>
+        </Box >
     }
 
     return <Box display={'flex'}

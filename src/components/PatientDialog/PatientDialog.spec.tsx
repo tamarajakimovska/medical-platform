@@ -6,7 +6,21 @@ describe('PatientDialog should render', () => {
         const element = render(<PatientDialog
             isOpen={true}
             mode={'add'}
-            patient={{}}
+            patient={{
+                image: '',
+                name: '',
+                id: '123',
+                age: 42,
+                number: '444000222',
+                adress: 'Jablonskistrasse 21, 10405, Berlin',
+                lastVisit: '2023-01-01',
+                gender: 'female',
+                email: 'anna@musterman.com',
+                date: '2023-05-05',
+                visitTime: '09:00-09:45',
+                doctor: 'Dr. Liam',
+                injury: 'factura'
+            }}
             onClose={() => null}
             onSubmit={() => null}
         />)
@@ -18,7 +32,21 @@ describe('PatientDialog should render', () => {
         const element = render(<PatientDialog
             isOpen={true}
             mode={'edit'}
-            patient={{}}
+            patient={{
+                image: '',
+                name: '',
+                id: '123',
+                age: 42,
+                number: '444000222',
+                adress: 'Jablonskistrasse 21, 10405, Berlin',
+                lastVisit: '2023-01-01',
+                gender: 'female',
+                email: 'anna@musterman.com',
+                date: '2023-05-05',
+                visitTime: '09:00-09:45',
+                doctor: 'Dr. Liam',
+                injury: 'factura'
+            }}
             onClose={() => null}
             onSubmit={() => null}
         />)
