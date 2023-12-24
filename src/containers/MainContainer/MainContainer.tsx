@@ -1,7 +1,7 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { DialogContainer } from "../DialogContainer";
-import { BodyMenu, LoginButton, MobileMenu, NavigationMenu } from "../../components";
+import { BodyMenu, LoginButton, LoginLoaders, MobileMenu, NavigationMenu } from "../../components";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginContainer } from "..";
 
@@ -13,11 +13,15 @@ interface Props {
 export const MainContainer = ({ children }: Props) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
 
-    console.log('isAuthenticated', isAuthenticated);
+    if (isLoading && !isAuthenticated) {
+        return <Box width="100%" height="100vh" display='flex' justifyContent='space-between' alignItems='center'>
+            <LoginLoaders />
+        </Box >
+    }
 
-    if (!isAuthenticated) {
+    if (!isAuthenticated && !isLoading) {
         return <Box width="100%" height="100vh" display='flex' justifyContent='space-between' alignItems='center' style={{
             background: "linear-gradient(90deg, rgba(31,115,189,1) 3%, rgba(164,216,229,1) 38%, rgba(112,182,226,1) 100%)"
         }}>

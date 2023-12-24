@@ -21,22 +21,7 @@ export const PatientsContainer = () => {
     useGetPatients();
 
     const onDelete = async (patient: IPatient) => {
-        try {
-            const response = await axios.delete(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`)
-
-            if (response.status === 200) {
-                try {
-                    state.getPatients();
-                    const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
-
-                    state.getPatientsSuccess(response.data);
-                } catch (error) {
-                    state.getPatientsFail();
-                }
-            }
-        } catch {
-            console.log("Delete failed");
-        }
+        state.deletePatient(patient);
     };
 
     const onEditPatient = async (patient: IPatient) => {

@@ -2,72 +2,60 @@ import * as React from 'react';
 import { Context } from '../../context';
 import axios from 'axios';
 import { AppointmentDialog, PatientDialog, PaymentDialog } from '../../components';
-import { useId } from 'react';
 import { Appointment, Patient, Payment } from '../../interfaces';
+import { v4 as uuidv4 } from 'uuid';
+
 
 export const DialogContainer = () => {
     const state = React.useContext(Context);
-    const id = useId();
 
     const onAddPatient = async (patient: Patient) => {
-        const response = await axios.post('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients', {
+        const id = uuidv4();
+        const date = new Date();
+
+        state.addPatient({
             image: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg',
             name: patient.name,
             age: patient.age,
             adress: patient.adress,
             number: patient.number,
-            id: patient.id
-        })
+            id,
+            gender: patient.gender,
+            email: patient.email,
+            date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+            lastVisit: '',
+            visitTime: patient.visitTime,
+            doctor: patient.doctor,
+            injury: patient.injury
+        });
 
-        // Close the dialog
-        if (response.status === 201) {
-            state.setIsAddPatientDialogOpen(false);
-            // TO-DO: Create a hook for Refetch the patients
-            try {
-                state.getPatients();
-                const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
-
-                state.getPatientsSuccess(response.data);
-            } catch (error) {
-                state.getPatientsFail();
-            }
-        }
+        state.setIsAddPatientDialogOpen(false);
     }
 
     const onAddAppointment = async (appointment: Appointment) => {
+        const id = uuidv4();
+        const date = new Date();
 
-        console.log("ON ADD", appointment)
-        const response = await axios.post('https://6554a22a63cafc694fe6bb57.mockapi.io/appointments', {
+        state.addAppointment({
             image: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg',
             name: appointment.name,
-            email: appointment.email,
-            date: appointment.date,
-            visitTime: appointment.visitTime,
+            age: appointment.age,
+            adress: appointment.adress,
             number: appointment.number,
+            id,
+            gender: appointment.gender,
+            email: appointment.email,
+            date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+            lastVisit: '',
+            visitTime: appointment.visitTime,
             doctor: appointment.doctor,
-            injury: appointment.injury,
-            id
-        })
-
-
-        // Close the dialog
-        if (response.status === 201) {
-            state.setIsAddAppointmentDialogOpen(false);
-            // TO-DO: Create a hook for Refetch the patients
-            try {
-                state.getAppointments();
-                const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/appointments');
-
-                state.getAppointmentsSuccess(response.data);
-            } catch (error) {
-                state.getAppointmentsFail();
-            }
-        }
+            injury: appointment.injury
+        });
+        state.setIsAddAppointmentDialogOpen(false);
     }
 
     const onAddPayment = async (payment: Payment) => {
-
-        const response = await axios.post('https://6555e1d584b36e3a431e8f4f.mockapi.io/payments', {
+        state.addPayment({
             bill: payment.bill,
             patient: payment.patient,
             doctor: payment.doctor,
@@ -77,77 +65,55 @@ export const DialogContainer = () => {
             discount: payment.discount,
             total: payment.total
         })
-
-        if (response.status === 201) {
-            state.setIsPaymentDialogOpen(false);
-            try {
-                state.getPayments();
-                const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/payments');
-
-                state.getPaymentsSuccess(response.data);
-            } catch (error) {
-                state.getPaymentsFail();
-            }
-        }
+        state.setIsPaymentDialogOpen(false);
     }
-
 
     const onEditPatient = async (patient: Patient) => {
         console.log('patient', patient);
-        try {
-            const response = await axios.put(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`, {
-                ...patient
-            });
-            console.log('Success', response);
-        } catch {
-            console.log('Fail');
-        } finally {
-            state.setIsAddPatientDialogOpen(false);
-            // TO-DO: Create a hook for Refetch the patients
-            try {
-                state.getPatients();
-                const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
+        // try {
+        //     const response = await axios.put(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`, {
+        //         ...patient
+        //     });
+        //     console.log('Success', response);
+        // } catch {
+        //     console.log('Fail');
+        // } finally {
+        //     state.setIsAddPatientDialogOpen(false);
+        //     // TO-DO: Create a hook for Refetch the patients
+        //     try {
+        //         state.getPatients();
+        //         const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
 
-                state.getPatientsSuccess(response.data);
-            } catch (error) {
-                state.getPatientsFail();
-            }
-        }
+        //         state.getPatientsSuccess(response.data);
+        //     } catch (error) {
+        //         state.getPatientsFail();
+        //     }
+        // }
+        state.updatePatient(patient);
+        state.setIsAddPatientDialogOpen(false);
     }
 
     const onEditAppointment = async (appointment: Appointment) => {
-        try {
-            const response = await axios.put(`https://6554a22a63cafc694fe6bb57.mockapi.io/appointments/${appointment.id}`, {
-                ...appointment
-            });
-        } catch {
-            console.log('Fail')
-        } finally {
-            state.setIsAddAppointmentDialogOpen(false);
-            try {
-                state.getAppointments();
-                const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/appointments');
-
-                state.getAppointmentsSuccess(response.data);
-            } catch (error) {
-                state.getAppointmentsFail();
-            }
-        }
+        state.updateAppointment(appointment);
+        state.setIsAddAppointmentDialogOpen(false);
     }
 
     const onDialogClose = () => {
         state.setIsAddPatientDialogOpen(false)
         state.setDialogPatient({} as Patient);
+        state.setDialogMode('add');
     }
 
     const onAppointmentDialogClose = () => {
         state.setIsAddAppointmentDialogOpen(false)
         state.setDialogAppointment({} as Appointment);
+        state.setDialogMode('add');
     }
 
     const onPaymentDialogClose = () => {
         state.setIsPaymentDialogOpen(false)
         state.setDialogPayment({} as Payment);
+        state.setDialogMode('add');
     }
     return (
         <React.Fragment>

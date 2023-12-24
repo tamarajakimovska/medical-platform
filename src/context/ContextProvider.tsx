@@ -20,15 +20,22 @@ export const initialState: GlobalState = {
     dialogPatient: {} as Patient,
     dialogAppointment: {} as Appointment,
     dialogPayment: {} as Payment,
+    addAppointment: (appointment: Appointment) => null,
     getAppointments: () => null,
     getAppointmentsSuccess: (appointment: Appointment[]) => null,
     getAppointmentsFail: () => null,
+    updateAppointment: (appointment: Appointment) => null,
+    deleteAppointment: (appointment: Appointment) => null,
+    addPatient: (patient: Patient) => null,
     getPatients: () => null,
+    addPayment: (payment: Payment) => null,
     getPayments: () => null,
     getPatientsSuccess: (patients: Patient[]) => null,
     getPaymentsSuccess: (payments: Payment[]) => null,
     getPatientsFail: () => null,
     getPaymentsFail: () => null,
+    updatePatient: (patient: Patient) => null,
+    deletePatient: (patient: Patient) => null,
     setIsAddPatientDialogOpen: () => null,
     setIsAddAppointmentDialogOpen: () => null,
     setIsPaymentDialogOpen: () => null,
@@ -43,6 +50,10 @@ export const Context = createContext<GlobalState>(initialState);
 export const ContextProvider = ({ children }: Props) => {
     const [state, dispatch] = useReducer(Reducer, initialState);
 
+    const addPatient = (patient: Patient) => {
+        dispatch({ type: Actions.ADD_PATIENT, payload: patient })
+    }
+
     const getPatients = () => {
         dispatch({ type: Actions.GET_PATIENTS });
     }
@@ -55,6 +66,22 @@ export const ContextProvider = ({ children }: Props) => {
         dispatch({ type: Actions.GET_PATIENTS_FAIL });
     }
 
+    const updatePatient = (patient: Patient) => {
+        dispatch({ type: Actions.UPDATE_PATIENT, payload: patient })
+    }
+
+    const deletePatient = (patient: Patient) => {
+        dispatch({ type: Actions.DELETE_PATIENT, payload: patient })
+    }
+
+    const addAppointment = (appointment: Appointment) => {
+        dispatch({ type: Actions.ADD_APPOINTMENT, payload: appointment });
+    }
+
+    const updateAppointment = (appointment: Appointment) => {
+        dispatch({ type: Actions.UPDATE_APPOINTMENT, payload: appointment });
+    }
+
     const getAppointments = () => {
         dispatch({ type: Actions.GET_APPOINTMENTS });
     }
@@ -65,6 +92,10 @@ export const ContextProvider = ({ children }: Props) => {
 
     const getAppointmentsFail = () => {
         dispatch({ type: Actions.GET_APPOINTMENTS_FAIL });
+    }
+
+    const deleteAppointment = (appointment: Appointment) => {
+        dispatch({ type: Actions.DELETE_APPOINTMENT, payload: appointment })
     }
 
     const setIsAddPatientDialogOpen = (isOpen: boolean) => {
@@ -90,15 +121,23 @@ export const ContextProvider = ({ children }: Props) => {
     const setDialogPayment = (payment: Payment) => {
         dispatch({ type: Actions.SET_DIALOG_PAYMENTS, payload: payment });
     }
+
     const setIsPaymentDialogOpen = (isOpen: boolean) => {
         dispatch({ type: Actions.SET_IS_PAYMENTS_DIALOG_OPEN, payload: isOpen });
     }
+
+    const addPayment = (payment: Payment) => {
+        dispatch({ type: Actions.ADD_PAYMENT, payload: payment })
+    }
+
     const getPayments = () => {
         dispatch({ type: Actions.GET_PAYMENTS });
     }
+
     const getPaymentsSuccess = (payments: Payment[]) => {
         dispatch({ type: Actions.GET_PAYMENTS_SUCCESS, payload: payments });
     }
+
     const getPaymentsFail = () => {
         dispatch({ type: Actions.GET_PAYMENTS_FAIL })
     }
@@ -120,15 +159,22 @@ export const ContextProvider = ({ children }: Props) => {
             dialogPatient: state.dialogPatient,
             dialogAppointment: state.dialogAppointment,
             dialogPayment: state.dialogPayment,
+            addPayment: (payment: Payment) => addPayment(payment),
             getPayments: () => getPayments(),
             getPaymentsSuccess: (payments: Payment[]) => getPaymentsSuccess(payments),
             getPaymentsFail: () => getPaymentsFail,
+            addAppointment: (appointment: Appointment) => addAppointment(appointment),
             getAppointments: () => getAppointments(),
             getAppointmentsSuccess: (appointments: Appointment[]) => getAppointmentsSuccess(appointments),
             getAppointmentsFail: () => getAppointmentsFail(),
+            deleteAppointment: (appointment: Appointment) => deleteAppointment(appointment),
+            updateAppointment: (appointment: Appointment) => updateAppointment(appointment),
+            addPatient: (patient: Patient) => addPatient(patient),
             getPatients: () => getPatients(),
             getPatientsSuccess: (patients: Patient[]) => getPatientsSuccess(patients),
             getPatientsFail: () => getPatientsFail(),
+            updatePatient: (patient: Patient) => updatePatient(patient),
+            deletePatient: (patient: Patient) => deletePatient(patient),
             setIsAddPatientDialogOpen: (isOpen: boolean) => setIsAddPatientDialogOpen(isOpen),
             setIsAddAppointmentDialogOpen: (isOpen: boolean) => setIsAddAppointmentDialogOpen(isOpen),
             setIsPaymentDialogOpen: (isOpen: boolean) => setIsPaymentDialogOpen(isOpen),

@@ -14,12 +14,19 @@ export interface GlobalState {
     dialogPatient: Patient;
     dialogAppointment: Appointment;
     dialogPayment: Payment;
+    addAppointment: (appointment: Appointment) => void,
     getAppointments: () => void,
     getAppointmentsSuccess: (appointments: Appointment[]) => void,
     getAppointmentsFail: () => void,
+    updateAppointment: (appointment: Appointment) => void,
+    deleteAppointment: (appointment: Appointment) => void,
+    addPatient: (patient: Patient) => void,
     getPatients: () => void,
     getPatientsSuccess: (patients: Patient[]) => void,
     getPatientsFail: () => void,
+    updatePatient: (patient: Patient) => void,
+    deletePatient: (patient: Patient) => void,
+    addPayment: (payment: Payment) => void,
     getPayments: () => void,
     getPaymentsSuccess: (payments: Payment[]) => void,
     getPaymentsFail: () => void,

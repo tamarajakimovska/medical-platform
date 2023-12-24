@@ -4,6 +4,7 @@ import React from "react";
 import { LoginButton } from "../../components";
 import LoginImage from "../../images/login4.jpeg";
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const LoginBackground = styled('div')({
     width: '50%',
@@ -32,14 +33,13 @@ const LoginPage = styled('p')({
 })
 
 export const LoginContainer = () => {
-    return <Box width="100%" maxWidth="1140px" margin="0 auto" display='flex'>
+    return <Box width="100%" maxWidth="1140px" margin="0 auto" display='flex' >
         <LoginBackground>
         </LoginBackground>
         <Box ml="18%" mt="32%">
             <Box>
                 <LoginTitle>WELCOME</LoginTitle>
                 <LoginPage>Log in to continue to Medic-App</LoginPage>
-                <Box textAlign={'center'} mb={2}> <ArrowCircleDownIcon fontSize="large" /> </Box>
             </Box>
             <Box textAlign={'center'}>
                 <LoginButton />

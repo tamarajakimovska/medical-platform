@@ -33,20 +33,7 @@ export const AppointmentsContainer = () => {
     };
 
     const onDelete = async (appointment: IAppointment) => {
-        try {
-            const response = await axios.delete(`https://6554a22a63cafc694fe6bb57.mockapi.io/appointments/${appointment.id}`)
-        } catch {
-            console.log("Delete failed");
-        } finally {
-            try {
-                state.getAppointments();
-                const response = await axios.get('https://6554a22a63cafc694fe6bb57.mockapi.io/appointments');
-
-                state.getAppointmentsSuccess(response.data);
-            } catch (error) {
-                state.getAppointmentsFail();
-            }
-        }
+        state.deleteAppointment(appointment);
     };
 
     return <Box
