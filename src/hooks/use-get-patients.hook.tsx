@@ -19,6 +19,8 @@ export const useGetPatients = () => {
         }
 
         getPatients();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.patients.length])
 
     return null;

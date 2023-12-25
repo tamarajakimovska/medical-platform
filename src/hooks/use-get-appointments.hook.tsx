@@ -19,6 +19,8 @@ export const useGetAppointments = () => {
         }
 
         getAppointments();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.appointments?.length])
 
     return null;
