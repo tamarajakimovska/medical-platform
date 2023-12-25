@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Box } from "@mui/system";
 import { Appointment } from "../../components";
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled, useMediaQuery, useTheme } from "@mui/material";
-import axios from "axios";
 import { Context } from "../../context";
 import { useGetAppointments } from "../../hooks";
 import AddIcon from '@mui/icons-material/Add';

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Context } from '../../context';
-import axios from 'axios';
 import { AppointmentDialog, PatientDialog, PaymentDialog } from '../../components';
 import { Appointment, Patient, Payment } from '../../interfaces';
 import { v4 as uuidv4 } from 'uuid';
@@ -69,26 +68,6 @@ export const DialogContainer = () => {
     }
 
     const onEditPatient = async (patient: Patient) => {
-        console.log('patient', patient);
-        // try {
-        //     const response = await axios.put(`https://6555e1d584b36e3a431e8f4f.mockapi.io/patients/${patient.id}`, {
-        //         ...patient
-        //     });
-        //     console.log('Success', response);
-        // } catch {
-        //     console.log('Fail');
-        // } finally {
-        //     state.setIsAddPatientDialogOpen(false);
-        //     // TO-DO: Create a hook for Refetch the patients
-        //     try {
-        //         state.getPatients();
-        //         const response = await axios.get('https://6555e1d584b36e3a431e8f4f.mockapi.io/patients');
-
-        //         state.getPatientsSuccess(response.data);
-        //     } catch (error) {
-        //         state.getPatientsFail();
-        //     }
-        // }
         state.updatePatient(patient);
         state.setIsAddPatientDialogOpen(false);
     }

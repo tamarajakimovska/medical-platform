@@ -12,16 +12,6 @@ interface Props {
     onDeleteClick?: (patient: Patient) => void;
 }
 
-const StyleButton = styled('div')({
-    alignItems: 'center',
-    borderRadius: '60%',
-    display: 'flex',
-    height: '10px',
-    justifyContent: 'center',
-    padding: '0!important',
-    width: '10px'
-})
-
 export const Appointment = ({ patient, areActionsVisible = true, onEditClick, onDeleteClick }: Props) => {
     return (
         <React.Fragment>

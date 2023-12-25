@@ -3,8 +3,6 @@ import { DepartmentsInfo } from "../../components";
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material";
 import axios from "axios";
-import { useNavigate } from "react-router";
-import { DoctorsInfoContainer } from "..";
 import { DepartmentLoaders } from "../../components/Loaders/DepartmentLoaders";
 
 interface Department {
@@ -21,7 +19,6 @@ const Title = styled('h3')({
 
 export const DeparmentsInfoContainer = () => {
     const [departments, setDepartments] = useState<any>([]);
-    const navigate = useNavigate();
     const [isFetching, setIsFetching] = useState<boolean>(false)
 
     useEffect(() => {
