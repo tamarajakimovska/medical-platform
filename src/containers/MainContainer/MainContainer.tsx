@@ -1,7 +1,7 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { DialogContainer } from "../DialogContainer";
-import { BodyMenu, LoginButton, LoginLoaders, MobileMenu, NavigationMenu } from "../../components";
+import { BodyMenu, LoginLoaders, MobileMenu, NavigationMenu } from "../../components";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginContainer } from "..";
 

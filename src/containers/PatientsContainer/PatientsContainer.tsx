@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled } from "@mui/material";
 import { Patient } from "../../components";
-import axios from "axios";
 import { useGetPatients } from "../../hooks";
 import { Context } from "../../context";
 import { Patient as IPatient } from "../../interfaces";

@@ -47,7 +47,6 @@ interface Props {
 
 export const NavigationMenu = ({ onNavItemClick }: Props) => {
     const location = useLocation();
-    console.log('location', location)
     const navigate = useNavigate();
     const state = useContext(Context);
 
@@ -72,7 +71,7 @@ export const NavigationMenu = ({ onNavItemClick }: Props) => {
     }
 
     return <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'} position='fixed'>
-        <LogoStyle> <img src={logo} /></LogoStyle>
+        <LogoStyle> <img src={logo} alt="logo" /></LogoStyle>
         <Title>MEDICINE</Title>
         <Units onClick={() => onNavigationItemClick('/')}>
             <DashboardCustomizeRoundedIcon style={{ color: '#9D9D9D' }} />

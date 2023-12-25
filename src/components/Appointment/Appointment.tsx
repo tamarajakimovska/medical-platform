@@ -1,8 +1,6 @@
-import { Box, styled } from "@mui/system";
+import { styled } from "@mui/system";
 import React from "react";
-import { StringLiteralLike } from "typescript";
-import { AppointmentsContainer } from "../../containers";
-import { Button, Fab, TableCell } from "@mui/material";
+import { Fab, TableCell } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Patient } from "../../interfaces";

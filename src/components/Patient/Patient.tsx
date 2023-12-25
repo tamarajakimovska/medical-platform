@@ -2,7 +2,6 @@ import { Button, Fab, TableCell } from "@mui/material";
 import React from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Patient as IPatient } from "../../interfaces";
 
 interface Props {

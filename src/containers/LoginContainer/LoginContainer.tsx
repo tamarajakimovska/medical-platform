@@ -1,10 +1,7 @@
-import { LoadingButton } from "@mui/lab";
 import { Box, styled } from "@mui/system";
 import React from "react";
 import { LoginButton } from "../../components";
 import LoginImage from "../../images/login4.jpeg";
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-import { useAuth0 } from "@auth0/auth0-react";
 
 const LoginBackground = styled('div')(({ theme }) => ({
     width: '100%',
@@ -40,7 +37,6 @@ const LoginPage = styled('p')({
 export const LoginContainer = () => {
     return <Box width="100%" display='flex' sx={{
         maxWidth: {
-            // xs: '0',
             sm: '1140px'
         },
         margin: {
@@ -48,18 +44,14 @@ export const LoginContainer = () => {
             sm: '0 auto'
         },
         marginTop: {
-            // xs: '74%',
             sm: '0'
         },
-        // marginLeft: {
-        //     xs: '13%',
-        // }
         flexDirection: {
             xs: 'column',
             sm: 'row'
         },
         alignItems: {
-            xs: 'center'
+            xs: 'center',
         }
     }} >
         <LoginBackground>

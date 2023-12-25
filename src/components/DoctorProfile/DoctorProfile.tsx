@@ -10,7 +10,7 @@ interface Props {
 export const DoctorProfile = ({ doctor }: Props) => {
 
     return <Box>
-        <img src={doctor.image} width={'120px'} style={{ borderRadius: '50%', marginTop: '26px' }} />
+        <img src={doctor.image} alt="doctor" width={'120px'} style={{ borderRadius: '50%', marginTop: '26px' }} />
         <Box pt={5}>
             <TextField
                 id="name"
