@@ -16,8 +16,7 @@ export const UserProfileContainer = () => {
             flexDirection: {
                 xs: 'column',
                 sm: 'row'
-            },
-
+            }
         }}>
             <Box flexBasis={'45%'}>
                 <UserProfile />
