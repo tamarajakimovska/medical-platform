@@ -35,6 +35,8 @@ export const PaymentsContainer = () => {
         }
 
         getPayments();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return <Box
         sx={{
