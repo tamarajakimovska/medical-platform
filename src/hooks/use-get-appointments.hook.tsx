@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../context";
 import axios from "axios";
 
@@ -19,7 +19,7 @@ export const useGetAppointments = () => {
         }
 
         getAppointments();
-    }, [])
+    })
 
     return null;
 };

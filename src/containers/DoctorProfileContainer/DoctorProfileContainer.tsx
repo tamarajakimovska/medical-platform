@@ -15,20 +15,17 @@ export const DoctorProfileContainer = () => {
                 setIsFetching(true);
                 const response = await axios.get(`https://651451b48e505cebc2eb2031.mockapi.io/doctors/${id}`);
 
-                console.log('response', response)
                 if (response.status === 200) {
-                    console.log('setting data');
                     setIsFetching(false);
                     setDoctor(response.data)
                 }
             } catch {
                 setIsFetching(false);
-                console.log('Fetching doctor failed')
             }
         }
 
         getDoctor();
-    }, [])
+    }, [id])
 
 
     return <Box display={'flex'} justifyContent={'space-between'} sx={{

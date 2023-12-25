@@ -20,7 +20,7 @@ export const EditAccountContainer = () => {
         }}>
         <Title>Edit account</Title>
         <Box display={'flex'} alignItems={'center'}>
-            <img src={user} alt="image" style={{ borderRadius: '50%' }} width={'86px'} height={"92vh"} />
+            <img src={user} alt="user" style={{ borderRadius: '50%' }} width={'86px'} height={"92vh"} />
         </Box>
         <EditAccount />
     </Box >
