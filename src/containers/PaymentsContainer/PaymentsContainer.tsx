@@ -35,7 +35,7 @@ export const PaymentsContainer = () => {
         }
 
         getPayments();
-    });
+    }, []);
     return <Box
         sx={{
             padding: {

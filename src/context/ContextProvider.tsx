@@ -142,8 +142,6 @@ export const ContextProvider = ({ children }: Props) => {
         dispatch({ type: Actions.GET_PAYMENTS_FAIL })
     }
 
-    console.log('state', state);
-
     return <Context.Provider
         value={{
             payments: state.payments,

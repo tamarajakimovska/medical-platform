@@ -40,7 +40,6 @@ export const PatientDialog = ({ isOpen, mode, patient, onClose, onSubmit }: Prop
                     variant="standard"
                     value={localPatient.name || ''}
                     onChange={(event) => {
-                        console.log('123')
                         setLocalPatient({ ...localPatient, name: event.target.value })
                     }}
                 />

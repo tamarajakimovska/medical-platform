@@ -19,7 +19,7 @@ export const useGetAppointments = () => {
         }
 
         getAppointments();
-    })
+    }, [state.appointments?.length])
 
     return null;
 };

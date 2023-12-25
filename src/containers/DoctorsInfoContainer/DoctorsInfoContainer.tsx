@@ -16,7 +16,6 @@ export const DoctorsInfoContainer = () => {
     const navigate = useNavigate();
     const [isFetching, setIsFetching] = useState<boolean>(false);
 
-    console.log('isFetching', isFetching);
     useEffect(() => {
         const getDoctors = async () => {
             setIsFetching(true);
@@ -40,8 +39,6 @@ export const DoctorsInfoContainer = () => {
     const onDoctorClick = (id: string) => {
         navigate(`/profile/${id}`);
     }
-
-    console.log('dd', doctors)
 
     return <Box
         sx={{

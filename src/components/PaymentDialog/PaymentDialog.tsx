@@ -33,7 +33,6 @@ export const PaymentDialog = ({ isOpen, mode, payment, onClose, onSubmit }: Prop
                     variant="standard"
                     value={localPayment.bill || ''}
                     onChange={(event) => {
-                        console.log('123')
                         setLocalPayment({ ...localPayment, bill: event.target.value })
                     }}
                 />

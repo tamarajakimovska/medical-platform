@@ -19,7 +19,7 @@ export const useGetPatients = () => {
         }
 
         getPatients();
-    })
+    }, [state.patients.length])
 
     return null;
 };
