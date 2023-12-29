@@ -1,11 +1,12 @@
-import { AppBar, Box, Drawer, IconButton, Toolbar } from "@mui/material";
+import { AppBar, Box, Dialog, DialogContent, IconButton, Toolbar } from "@mui/material";
 import React, { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavigationMenu } from "./NavigationMenu";
 import { BodyMenu } from "./BodyMenu";
+import CloseIcon from '@mui/icons-material/Close';
 
 export const MobileMenu = () => {
-    const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
+    const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
     return <Box sx={{ flexGrow: 1, zIndex: '99999', '-webkit-transform': 'translate3d(0px, 0px, 0px)' }} position='fixed' width="100%">
         <AppBar position="static">
@@ -16,7 +17,7 @@ export const MobileMenu = () => {
                     color="inherit"
                     aria-label="menu"
                     sx={{ mr: 2 }}
-                    onClick={() => setMenuOpen(true)}
+                    onClick={() => setIsDialogOpen(true)}
                 >
                     <MenuIcon />
                 </IconButton>
@@ -24,12 +25,19 @@ export const MobileMenu = () => {
             </Toolbar>
         </AppBar>
 
-        <Drawer
-            anchor={'left'}
-            open={isMenuOpen}
-            onClose={() => setMenuOpen(false)}
+        <Dialog
+            open={isDialogOpen}
+            fullWidth
+            fullScreen
+            onClose={() => setIsDialogOpen(false)}
+            style={{ zIndex: '99999' }}
         >
-            <NavigationMenu onNavItemClick={() => setMenuOpen(false)} />
-        </Drawer>
+            <DialogContent style={{ backgroundColor: '#fbfbfb' }}>
+                <Box display='flex' justifyContent='end' onClick={() => setIsDialogOpen(false)}>
+                    <CloseIcon />
+                </Box>
+                <NavigationMenu width='100%' position='relative' onNavItemClick={() => setIsDialogOpen(false)} />
+            </DialogContent>
+        </Dialog>
     </Box>
 }

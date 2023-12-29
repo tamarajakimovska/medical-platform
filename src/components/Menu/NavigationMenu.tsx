@@ -42,10 +42,12 @@ const NavItem = styled('div')((props) => ({
 }));
 
 interface Props {
+    width?: string | number;
+    position?: 'fixed' | 'relative';
     onNavItemClick?: () => void;
 }
 
-export const NavigationMenu = ({ onNavItemClick }: Props) => {
+export const NavigationMenu = ({ width = '240px', position = 'fixed', onNavItemClick }: Props) => {
     const location = useLocation();
     const navigate = useNavigate();
     const state = useContext(Context);
@@ -70,7 +72,7 @@ export const NavigationMenu = ({ onNavItemClick }: Props) => {
         navigate(page);
     }
 
-    return <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'} position='fixed' zIndex={'9999'}>
+    return <Box width={width} height={'100vh'} bgcolor={'#fbfbfb'} position={position} zIndex={'9999'}>
         <LogoStyle> <img src={logo} alt="logo" /></LogoStyle>
         <Title>MEDICINE</Title>
         <Units onClick={() => onNavigationItemClick('/')}>
