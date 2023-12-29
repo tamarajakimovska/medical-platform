@@ -70,7 +70,7 @@ export const NavigationMenu = ({ onNavItemClick }: Props) => {
         navigate(page);
     }
 
-    return <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'} position='fixed'>
+    return <Box width={'240px'} height={'100vh'} bgcolor={'#fbfbfb'} position='fixed' zIndex={'9999'}>
         <LogoStyle> <img src={logo} alt="logo" /></LogoStyle>
         <Title>MEDICINE</Title>
         <Units onClick={() => onNavigationItemClick('/')}>
