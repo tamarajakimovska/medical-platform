@@ -7,7 +7,7 @@ import { BodyMenu } from "./BodyMenu";
 export const MobileMenu = () => {
     const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
 
-    return <Box sx={{ flexGrow: 1, zIndex: '99999' }} position='fixed' width="100%">
+    return <Box sx={{ flexGrow: 1, zIndex: '99999', '-webkit-transform': 'translate3d(0px, 0px, 0px)' }} position='fixed' width="100%">
         <AppBar position="static">
             <Toolbar style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <IconButton
