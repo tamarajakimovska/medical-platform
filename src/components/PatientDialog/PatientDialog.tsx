@@ -9,6 +9,7 @@ import { Box } from "@mui/material";
 import { useState } from "react";
 import dayjs from 'dayjs';
 import { Patient } from "../../interfaces";
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Props {
     isOpen: boolean;
@@ -27,8 +28,12 @@ export const PatientDialog = ({ isOpen, mode, patient, onClose, onSubmit }: Prop
 
     return <React.Fragment>
         <Dialog open={isOpen} onClose={() => onClose()}>
-            <DialogTitle>{mode === 'add' ? 'Add' : 'Edit'} patient</DialogTitle>
-            <Box></Box>
+            <DialogTitle>
+                <Box display='flex' justifyContent='space-between' alignItems='center' onClick={() => onClose()}>
+                    <span>{mode === 'add' ? 'Add' : 'Edit'} patient</span>
+                    <CloseIcon />
+                </Box>
+            </DialogTitle>
             <DialogContent>
                 <TextField
                     autoFocus

@@ -1,6 +1,7 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Payment } from "../../interfaces";
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Props {
     isOpen: boolean;
@@ -20,7 +21,12 @@ export const PaymentDialog = ({ isOpen, mode, payment, onClose, onSubmit }: Prop
 
     return <React.Fragment>
         <Dialog open={isOpen} onClose={() => onClose()}>
-            <DialogTitle>Add payment</DialogTitle>
+            <DialogTitle>
+                <Box display='flex' justifyContent='space-between' alignItems='center' onClick={() => onClose()}>
+                    <span>Add payment</span>
+                    <CloseIcon />
+                </Box>
+            </DialogTitle>
             <Box></Box>
             <DialogContent>
                 <TextField
