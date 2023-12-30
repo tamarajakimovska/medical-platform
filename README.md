@@ -1,6 +1,6 @@
 # Medical App
 
-LIVE DEMO: [https://medical-app-by-tamara.netlify.app/](https://medical-app-by-tamara.netlify.app/){:target="_blank"}
+LIVE DEMO: [https://medical-app-by-tamara.netlify.app/](https://medical-app-by-tamara.netlify.app/)
 
 ## How to run the project?
 
